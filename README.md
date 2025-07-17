@@ -1,5 +1,5 @@
 # Webpage-Katalog
-Webpage katalog produk (trial 1)
+Webpage katalog produk 
 Fitur yang tersedia :
 1. Search bar
 2. Sorting (Sort by)
