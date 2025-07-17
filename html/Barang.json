@@ -1,0 +1,85 @@
+[
+  {
+    "id": 31,
+    "kategori": null,
+    "nama_barang": "(Second) Tenda N301",
+    "stok": 2,
+    "harga_jual": "138000",
+    "deskripsi": "Router Tenda 2.4Ghz",
+    "updated_at": "2025-07-13T04:22:34.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 32,
+    "kategori": null,
+    "nama_barang": "HTB 2F4L Modif 24v",
+    "stok": 6,
+    "harga_jual": "112000",
+    "deskripsi": "HTB 2F4L Modif 24v",
+    "updated_at": "2025-07-13T04:22:34.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 15,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel UTP OS",
+    "stok": 472,
+    "harga_jual": "2460",
+    "deskripsi": "Kabel UTP Outdoor Single Jacket Zimm Link",
+    "updated_at": "2025-07-10T02:40:32.000000Z",
+    "galeri": [
+      {
+        "id": 34,
+        "barang_id": 15,
+        "file_path": "gambar_barang/PXGCiXajokQ7oYygoWQCl4dOkS4IdF3zFAtnBikH.jpg",
+        "created_at": "2024-10-20T06:30:04.000000Z",
+        "updated_at": "2024-10-20T06:30:04.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "kategori": null,
+    "nama_barang": "PatchCord 1m",
+    "stok": 10,
+    "harga_jual": "13000",
+    "deskripsi": "PatchCord panjang 1m",
+    "updated_at": "2025-01-27T03:47:10.000000Z",
+    "galeri": [
+      {
+        "id": 35,
+        "barang_id": 14,
+        "file_path": "gambar_barang/q7JJy1W6WN2GbPpvBdl167dPl2XKjeRNGmppcIEm.png",
+        "created_at": "2025-07-15T03:02:32.000000Z",
+        "updated_at": "2025-07-15T03:02:32.000000Z"
+      },
+      {
+        "id": 36,
+        "barang_id": 14,
+        "file_path": "gambar_barang/UnPByGzMb37KGsyQr0gq95tydGMoY5G6snKBtN8y.png",
+        "created_at": "2025-07-15T03:02:32.000000Z",
+        "updated_at": "2025-07-15T03:02:32.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "kategori": "Router",
+    "nama_barang": "Tenda N301",
+    "stok": 10,
+    "harga_jual": "158400",
+    "deskripsi": "Router Tenda 2.4 Ghz",
+    "updated_at": "2025-01-20T14:00:14.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 10,
+    "kategori": null,
+    "nama_barang": "Totolink N200RE",
+    "stok": 22,
+    "harga_jual": "186000",
+    "deskripsi": "Router Totolink 2.4Ghz",
+    "updated_at": "2025-01-27T03:47:10.000000Z",
+    "galeri": []
+  }
+]
