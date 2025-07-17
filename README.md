@@ -1,5 +1,4 @@
 # Webpage-Katalog
-Webpage katalog produk 
 Fitur yang tersedia :
 1. Search bar
 2. Sorting (Sort by)
@@ -8,3 +7,4 @@ Fitur yang tersedia :
 5. Toast Notif
 6. Modal detail
 7. Pagination (Halaman Produk)
+8. Tambah dan kurangi item
