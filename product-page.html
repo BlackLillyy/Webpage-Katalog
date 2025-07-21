@@ -740,8 +740,10 @@
         <h5>Total Pembayaran</h5>
         <p class="fs-5"><strong>Total:</strong> Rp ${total.toLocaleString()}</p>
 
-        <div class="text-end">
-          <button id="submitOrderBtn" class="btn btn-primary w-100 w-md-auto mt-2" onclick="submitOrder()">
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-outline-secondary" onclick="backToCart()">← Kembali ke Keranjang</button>
+
+          <button id="submitOrderBtn" class="btn btn-primary" onclick="submitOrder()">
             Konfirmasi Pesanan
           </button>
         </div>
@@ -752,6 +754,15 @@
 
       const modal = new bootstrap.Modal(document.getElementById("checkoutModal"));
       modal.show();
+    }
+ 
+    function backToCart() {
+      const checkoutModal = bootstrap.Modal.getInstance(document.getElementById("checkoutModal"));
+      if (checkoutModal) checkoutModal.hide();
+
+      setTimeout(() => {
+        showCart();
+      }, 300);
     }
 
     function submitOrder() {
