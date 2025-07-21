@@ -55,7 +55,8 @@
     .product-image {
       width: 100%;
       height: 180px;
-      object-fit: cover;
+      object-fit: contain;
+      background-color: white;
       border-radius: 5px;
     }
     .product-card h5,
@@ -70,7 +71,11 @@
     }
     .modal-body strong {
       color: black;
-    }    
+    }  
+    .modal-content {
+      max-height: 90vh;
+      overflow-y: auto ;
+    }  
     .btn-purple {
       background-color: #8a73ff;
       border: none;
@@ -82,6 +87,55 @@
     .btn-purple:hover {
       background-color: #7a63e6;
     }
+    input.form-control,
+    select.form-select,
+    textarea.form-control,
+    button {
+      font-size: 1rem;
+    }
+    table img {
+      border-radius: 5px;
+    }
+    .table td, .table th {
+      white-space: nowrap;
+    }
+    @media (max-width: 576px) {
+      .table td, .table th {
+        white-space: normal;
+      }
+    }
+    @media (max-width: 576px) {
+      .product-image {
+        height: 150px;
+      }
+    }
+    @media (max-width: 576px) {
+      .form-control,
+      .form-select,
+      .btn {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+    }
+      @media (max-width: 576px) {
+        .toast-container {
+          bottom: 1rem !important;
+          right: 50% !important;
+          transform: translateX(50%);
+          width: 90vw;
+          padding: 0;
+        }
+
+        #cartToast {
+          width: 100%;
+          font-size: 0.9rem;
+        }
+
+        #cartToast .toast-body {
+          padding: 0.75rem 1rem;
+        }
+      }
+
   </style>
 </head>
 <body>
@@ -189,9 +243,79 @@
       <div class="modal-body" id="cartModalBody">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
         <button type="button" class="btn btn-danger" onclick="clearCart()">Kosongkan Keranjang</button>
+        <button type="button" class="btn btn-success" onclick="proceedToCheckout()">Checkout</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Login Pelanggan</h5>
+      </div>
+      <div class="modal-body">
+        <form id="loginForm">
+          <div class="mb-3">
+            <label for="name-input" class="form-label">Nama Lengkap</label>
+            <input type="text" class="form-control" id="name-input" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone-input" class="form-label">Nomor WhatsApp</label>
+            <input type="tel" class="form-control" id="phone-input" required placeholder="Contoh: 085612345678">
+          </div>
+          <div class="mb-3">
+            <label for="email-input" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email-input" placeholder="nama@email.com" required>
+          </div>
+          <div class="text-end">
+            <button type="submit" class="btn btn-success">Login & Checkout</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cartModalLabel">Checkout Pesanan</h5>
+      </div>
+      <div class="modal-body" id="checkoutModalBody">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ringkasan Pesanan</h5>
+      </div>
+      <div class="modal-body" id="summaryModalBody">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" onclick="lanjutWhatsApp()">
+        <i class="fab fa-whatsapp fa-lg"></i> Kirim ke WhatsApp
+        </button>
+        <a href="#" class="btn btn-outline-danger mt-2" onclick="resetToHome()">Kembali ke Katalog</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="cartToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="cartToastBody">
+        Produk ditambahkan ke keranjang!
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
   </div>
 </div>
@@ -216,6 +340,7 @@
       }
 
       paginated.forEach(product => {
+        const linkGalery = "https://gudang.skytama.com/storage/"
         const img = product.galeri?.[0]?.file_path
           ? product.galeri[0].file_path
           : "https://via.placeholder.com/280x180?text=No+Image";
@@ -224,7 +349,7 @@
         const card = `
           <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex">
             <div class="product-card w-100 d-flex flex-column">
-              <img src="${img}" alt="${product.nama_barang}" class="product-image mb-1">
+              <img src="${linkGalery}${img}" alt="${product.nama_barang}" class="product-image mb-1">
               <h5>${product.nama_barang}</h5>
               <p class="text-muted">${product.deskripsi || ''}</p>
               <p><strong>Kategori:</strong> ${kategori}</p>
@@ -261,7 +386,7 @@
       const modalBody = document.getElementById("productDetailBody");
 
       const img = (product.galeri && product.galeri.length > 0 && product.galeri[0].file_path)
-        ? product.galeri[0].file_path
+        ? `https://gudang.skytama.com/storage/${product.galeri[0].file_path}`
         : "https://via.placeholder.com/280x180?text=No+Image";
 
       const stokLabel = parseInt(product.stok) <= 3
@@ -281,10 +406,11 @@
             <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
             <p><strong>Stok:</strong> ${stokLabel}</p>
             <p><strong>Deskripsi:</strong><br>${product.deskripsi || '-'}</p>
+            
           <div class="d-flex justify-content-between align-items-center my-2">
-            <div class="input-group" style="width: 130px;">
+            <div class="input-group" style="width: 130px; max-width: 100%;">
               <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty(-1)">−</button>
-              <input type="text" id="detailQty" value="1" class="form-control text-center" readonly>
+              <input type="number" id="detailQty" value="1" class="form-control text-center" min="1">
               <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty(1)">+</button>
             </div>
             <button class="btn btn-success flex-grow-1 ms-2" onclick='addDetailToCart()'>
@@ -299,58 +425,53 @@
       modal.show();
     }
 
-    function addToCart(product) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-      const existing = cart.find(item => item.id === product.id);
-      if (existing) {
-        existing.jumlah += 1;
-      } else {
-        cart.push({
-          id: product.id,
-          nama_barang: product.nama_barang,
-          harga_jual: parseInt(product.harga_jual),
-          jumlah: 1
-        });
-      }
-
-      localStorage.setItem('cart', JSON.stringify(cart));
-      showToast(`${product.nama_barang} (${qty} item) ditambahkan ke keranjang!`);
-
-        updateCartCount();
-    }
-
     function adjustQty(amount) {
       const qtyInput = document.getElementById("detailQty");
       let qty = parseInt(qtyInput.value);
-      qty = isNaN(qty) ? 1 : qty + amount;
+      if (isNaN(qty)) qty = 1;
+      qty += amount;
       if (qty < 1) qty = 1;
       qtyInput.value = qty;
     }
 
-function addDetailToCart() {
-  const qty = parseInt(document.getElementById("detailQty").value);
-  const product = window.currentDetailProduct;
-  if (!product || qty < 1) return;
+    function addDetailToCart() {
+      const qtyInput = document.getElementById("detailQty");
+      let qty = parseInt(qtyInput.value);
+      if (isNaN(qty) || qty < 1) qty = 1;
 
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const existing = cart.find(item => item.id === product.id);
+      const product = window.currentDetailProduct;
+      const stok = parseInt(product.stok);
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  if (existing) {
-    existing.jumlah += qty;
-  } else {
-    cart.push({
-      id: product.id,
-      nama_barang: product.nama_barang,
-      harga_jual: parseInt(product.harga_jual),
-      jumlah: qty
-    });
-  }
+      const existing = cart.find(item => item.id === product.id);
+      const jumlahSekarang = existing ? existing.jumlah : 0;
 
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCount();
-  showToast(`${product.nama_barang} ditambahkan ke keranjang!`);
-}
+      if (jumlahSekarang + qty > stok) {
+        showToast("Jumlah melebihi stok!", true);
+        return;
+      }
+
+      if (existing) {
+        existing.jumlah += qty;
+      } else {
+        const gambar = (product.galeri && product.galeri[0]?.file_path)
+        ? `https://gudang.skytama.com/storage/${product.galeri[0].file_path}`
+        : "https://via.placeholder.com/50";
+
+        cart.push({
+          id: product.id,
+          nama_barang: product.nama_barang,
+          harga_jual: parseInt(product.harga_jual),
+          jumlah: qty,
+          stok: stok,
+          gambar: gambar
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast(`${product.nama_barang} ditambahkan ke keranjang!`);
+    }
 
     function updateCartCount() {
       const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -358,82 +479,113 @@ function addDetailToCart() {
       document.getElementById("cart-count").textContent = totalQty;
     }
 
-  function showToast(message) {
-  const toastBody = document.getElementById('cartToastBody');
-  toastBody.textContent = message;
+    function showToast(message, isError = false) {
+      const toastBody = document.getElementById('cartToastBody');
+      toastBody.textContent = message;
 
-  const toastEl = document.getElementById('cartToast');
-  const toast = bootstrap.Toast.getOrCreateInstance(toastEl);
-  toast.show();
-}
+      const toastEl = document.getElementById('cartToast');
+      toastEl.className = `toast align-items-center text-white border-0 bg-${isError ? 'danger' : 'success'}`;
 
-  function showCart() {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const modalBody = document.getElementById("cartModalBody");
+      const toast = bootstrap.Toast.getOrCreateInstance(toastEl, {
+        delay: 1500,
+        autohide: true
+      });
 
-    if (cart.length === 0) {
-      modalBody.innerHTML = "<p class='text-muted'>Keranjang masih kosong.</p>";
-    } else {
-      let total = 0;
-      let list = cart.map(item => {
-        const subtotal = item.harga_jual * item.jumlah;
-        total += subtotal;
-        return `
-          <tr>
-            <td>${item.nama_barang}</td>
-            <td>
-              <div class="d-flex align-items-center gap-2">
-                <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${item.id})">−</button>
-                <span>${item.jumlah}</span>
-                <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${item.id})">+</button>
-                <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})" title="Hapus">
-                  <i class="fas fa-trash-alt"></i>
-                </button>
-              </div>
-            </td>
-            <td>Rp ${item.harga_jual.toLocaleString()}</td>
-            <td>Rp ${subtotal.toLocaleString()}</td>
-          </tr>`;
-      }).join("");
-
-      modalBody.innerHTML = `
-        <table class="table table-sm align-middle">
-          <thead>
-            <tr>
-              <th>Nama Barang</th>
-              <th>Jumlah</th>
-              <th>Harga</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${list}
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="3"><strong>Total</strong></td>
-              <td><strong>Rp ${total.toLocaleString()}</strong></td>
-            </tr>
-          </tfoot>
-        </table>
-      `;
+      toast.show();
     }
 
-    const modalEl = document.getElementById('cartModal');
-    const modal = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
-modal.show();
+    function showCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const modalBody = document.getElementById("cartModalBody");
 
-  }
+      if (cart.length === 0) {
+        modalBody.innerHTML = "<p class='text-muted'>Keranjang masih kosong.</p>";
+      } else {
+        let total = 0;
+        let list = cart.map(item => {
+          const subtotal = item.harga_jual * item.jumlah;
+          total += subtotal;
 
-  function increaseQuantity(id) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const item = cart.find(p => p.id === id);
-    if (item) {
-      item.jumlah += 1;
+          return `
+            <tr>
+              <td>${item.nama_barang}</td>
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(${item.id})">−</button>
+                  <input type="number" min="1" class="form-control form-control-sm text-center" 
+                    value="${item.jumlah}" style="width: 60px;" 
+                    onchange="updateQuantityManual(${item.id}, this.value)">
+                  <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(${item.id})">+</button>
+                  <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </div>
+              </td>
+              <td>Rp ${item.harga_jual.toLocaleString()}</td>
+              <td>Rp ${subtotal.toLocaleString()}</td>
+            </tr>`;
+        }).join("");
+
+        modalBody.innerHTML = `
+          <table class="table table-sm align-middle">
+            <thead>
+              <tr>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>${list}</tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3"><strong>Total</strong></td>
+                <td><strong>Rp ${total.toLocaleString()}</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById("cartModal"));
+      modal.show();
+
+      document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+    }
+
+    function updateQuantityManual(id, value) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const item = cart.find(p => p.id === id);
+      const stok = item.stok || 99;
+      let jumlah = parseInt(value);
+      if (isNaN(jumlah) || jumlah < 1) jumlah = 1;
+
+      if (jumlah > stok ) {
+        showToast("Jumlah melebihi stok!", true);
+        showCart();
+        return;
+      }
+
+      item.jumlah = jumlah;
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
       showCart();
     }
+
+  function increaseQuantity(id) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const item = cart.find(p => p.id === id);
+    const stok = item.stok || 99;
+
+    if (item.jumlah + 1 > stok) {
+      showToast("Jumlah melebihi stok!", true);
+      return;
+    }
+
+    item.jumlah += 1;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    showCart();
   }
 
   function decreaseQuantity(id) {
@@ -458,13 +610,286 @@ modal.show();
     showCart();
   }
 
-  function clearCart() {
-    localStorage.removeItem('cart');
-    updateCartCount();
-    const modal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
-    modal.hide();
-    document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
-  }
+    function clearCart() {
+      localStorage.removeItem('cart');
+      updateCartCount();
+
+      const modalEl = document.getElementById('cartModal');
+      const modalInstance = bootstrap.Modal.getInstance(modalEl);
+      modalInstance.hide();
+
+      setTimeout(() => {
+        document.getElementById("cartModalBody").innerHTML = "<p class='text-muted'>Keranjang masih kosong.</p>";
+      }, 500); 
+    }
+
+    function handleLogin() {
+      const name = document.getElementById("name-input").value.trim();
+      const phone = document.getElementById("phone-input").value.trim();
+      const email = document.getElementById("email-input").value.trim();
+
+      if (!name || !phone || !email) {
+        showToast("Semua kolom wajib diisi!", true);
+        return;
+      }
+
+      localStorage.setItem("pelanggan", JSON.stringify({ name, phone, email }));
+
+      const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
+      loginModal.hide();
+
+      showToast("Login berhasil!");
+      proceedToCheckout();
+    }
+
+    function proceedToCheckout() {
+      const pelanggan = JSON.parse(localStorage.getItem("pelanggan"));
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      if (!pelanggan || !pelanggan.name || !pelanggan.phone || !pelanggan.email) {
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+        return;
+      }
+
+      for (const item of cart) {
+        if (item.jumlah > (item.stok || 99)) {
+          showToast(`Stok ${item.nama_barang} tidak mencukupi!`, true);
+          return;
+        }
+      }
+
+      showCheckoutModal(pelanggan);
+    }
+
+    function showCheckoutModal(pelanggan) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        showToast("Keranjang kosong!", true);
+        return;
+      }
+
+      let total = 0;
+      let daftarProduk = cart.map(item => {
+        const subtotal = item.harga_jual * item.jumlah;
+        total += subtotal;
+        return `
+          <tr>
+            <td><img src="${item.gambar || 'https://via.placeholder.com/50'}" alt="${item.nama_barang}" style="width: 50px; height: 50px; object-fit: cover;"></td>
+            <td>${item.nama_barang}</td>
+            <td>${item.jumlah}</td>
+            <td>Rp ${item.harga_jual.toLocaleString()}</td>
+            <td>Rp ${(item.harga_jual * item.jumlah).toLocaleString()}</td>
+          </tr>
+        `;
+      }).join("");
+
+      const html = `
+        <h5 class="mb-1">Informasi Pelanggan</h5>
+        <div class="mb-1"><strong>Nama:</strong> ${pelanggan.name}</div>
+        <div class="mb-1"><strong>Nomor WA:</strong> ${pelanggan.phone}</div>
+        <div class="mb-1"><strong>Email:</strong> ${pelanggan.email}</div>
+        <div class="mb-2">
+          <label for="alamatCheckout" class="form-label"><strong>Alamat Lengkap</strong></label>
+          <textarea class="form-control" id="alamatCheckout" rows="2" placeholder="Tulis alamat pengiriman..."></textarea>
+        </div>
+
+        <hr>
+        <h5>Daftar Produk</h5>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle">
+            <thead>
+              <tr>
+                <th>Gambar</th>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Harga</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>${daftarProduk}</tbody>
+          </table>
+        </div>
+
+        <div class="mb-3">
+          <label for="catatanCheckout" class="form-label"><strong>Catatan untuk Penjual</strong></label>
+          <textarea class="form-control" id="catatanCheckout" rows="2" placeholder="(Opsional) Tambahan catatan..."></textarea>
+        </div>
+
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label for="jasaKirim" class="form-label"><strong>Opsi Pengiriman</strong></label>
+            <select id="jasaKirim" class="form-select">
+              <option value="" disabled selected>Pilih Jasa Kirim</option>
+              <option value="JNE">JNE</option>
+              <option value="J&T">J&T</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="pembayaran" class="form-label"><strong>Metode Pembayaran</strong></label>
+            <select id="pembayaran" class="form-select">
+              <option value="" disabled selected>Pilih Metode Pembayaran</option>
+              <option value="COD">COD (Bayar di Tempat)</option>
+              <option value="Transfer Bank">Transfer Bank</option>
+              <option value="E-Wallet">E-Wallet (Dana/OVO/Gopay)</option>
+            </select>
+          </div>
+        </div>
+
+        <hr>
+        <h5>Total Pembayaran</h5>
+        <p class="fs-5"><strong>Total:</strong> Rp ${total.toLocaleString()}</p>
+
+        <div class="text-end">
+          <button id="submitOrderBtn" class="btn btn-primary w-100 w-md-auto mt-2" onclick="submitOrder()">
+            Konfirmasi Pesanan
+          </button>
+        </div>
+      `;
+
+      const modalBody = document.getElementById("checkoutModalBody");
+      modalBody.innerHTML = html;
+
+      const modal = new bootstrap.Modal(document.getElementById("checkoutModal"));
+      modal.show();
+    }
+
+    function submitOrder() {
+      const alamat = document.getElementById("alamatCheckout")?.value.trim();
+      const catatan = document.getElementById("catatanCheckout")?.value.trim() || "-";
+      const jasaKirim = document.getElementById("jasaKirim")?.value;
+      const pembayaran = document.getElementById("pembayaran")?.value;
+
+      if (!alamat || !jasaKirim || !pembayaran) {
+        showToast("Mohon lengkapi semua data checkout!", true);
+        return;
+      }
+
+      const pelanggan = JSON.parse(localStorage.getItem("pelanggan")) || {};
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      for (const item of cart) {
+        if (item.jumlah > (item.stok || 99)) {
+          showToast(`Stok ${item.nama_barang} tidak mencukupi saat checkout!`, true);
+          return;
+        }
+      }
+
+      let pesan = `Halo Admin, saya ingin melakukan pemesanan:\n\n`;
+      pesan += `*Nama:* ${pelanggan.name}\n`;
+      pesan += `*No. WhatsApp:* ${pelanggan.phone}\n`;
+      pesan += `*Email:* ${pelanggan.email}\n`;
+      pesan += `*Alamat:* ${alamat}\n`;
+      pesan += `*Catatan:* ${catatan}\n\n`;
+      pesan += `*Daftar Pesanan:*\n`;
+
+      let total = 0;
+      cart.forEach(item => {
+        const subtotal = item.harga_jual * item.jumlah;
+        total += subtotal;
+        pesan += `- ${item.nama_barang} x${item.jumlah} = Rp ${subtotal.toLocaleString()}\n`;
+      });
+
+      pesan += `\n*Total Pembayaran:* Rp ${total.toLocaleString()}\n`;
+      pesan += `*Pengiriman:* ${jasaKirim}\n`;
+      pesan += `*Pembayaran:* ${pembayaran}\n`;
+
+      window.latestOrderMessage = pesan;
+
+      let htmlSummary = `
+        <h5 class="mb-3">Informasi Pelanggan</h5>
+        <div class="mb-1"><strong>Nama:</strong> ${pelanggan.name}</div>
+        <div class="mb-1"><strong>No. WhatsApp:</strong> ${pelanggan.phone}</div>
+        <div class="mb-1"><strong>Email:</strong> ${pelanggan.email}</div>
+        <div class="mb-1"><strong>Alamat:</strong> ${alamat}</div>
+        <div class="mb-3"><strong>Catatan:</strong> ${catatan}</div>
+
+        <h5 class="mb-3">Daftar Produk</h5>
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle text-center">
+            <thead class="table-light">
+              <tr>
+                <th>Gambar</th>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Harga Satuan</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+      `;
+
+      cart.forEach(item => {
+        const subtotal = item.harga_jual * item.jumlah;
+        htmlSummary += `
+          <tr>
+            <td><img src="${item.gambar || 'https://via.placeholder.com/50'}" style="width: 50px; height: 50px; object-fit: cover;" alt="gambar produk"></td>
+            <td>${item.nama_barang}</td>
+            <td>${item.jumlah}</td>
+            <td>Rp ${item.harga_jual.toLocaleString()}</td>
+            <td>Rp ${subtotal.toLocaleString()}</td>
+          </tr>
+        `;
+      });
+
+      htmlSummary += `
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4"><strong>Total</strong></td>
+                <td><strong>Rp ${total.toLocaleString()}</strong></td>
+              </tr>
+              <tr>
+                <td colspan="2"><strong>Pengiriman</strong>: ${jasaKirim}</td>
+                <td colspan="3"><strong>Pembayaran</strong>: ${pembayaran}</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      `;
+
+      const checkoutModal = bootstrap.Modal.getInstance(document.getElementById("checkoutModal"));
+      if (checkoutModal) checkoutModal.hide();
+
+      document.getElementById("alamatCheckout").value = "";
+      document.getElementById("catatanCheckout").value = "";
+      document.getElementById("jasaKirim").selectedIndex = 0;
+      document.getElementById("pembayaran").selectedIndex = 0;
+
+      const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));
+      if (cartModal) cartModal.hide();
+
+      document.getElementById("summaryModalBody").innerHTML = htmlSummary;
+      const summaryModal = new bootstrap.Modal(document.getElementById("summaryModal"));
+      summaryModal.show();
+          }
+
+      function lanjutWhatsApp() {
+        const encoded = encodeURIComponent(window.latestOrderMessage || "");
+        const waUrl = `https://wa.me/6285608902857?text=${encoded}`;
+        window.open(waUrl, "_blank");
+        setTimeout(() => {
+          btn.disabled = false;
+          spinner.classList.add("d-none");
+          btnText.textContent = "Konfirmasi Pesanan";
+        }, 500);
+
+
+        localStorage.removeItem("cart");
+        updateCartCount();
+        document.getElementById("checkoutModalBody").innerHTML = "";
+
+        const modal = bootstrap.Modal.getInstance(document.getElementById("summaryModal"));
+        if (modal) modal.hide();
+
+        showToast("Pesanan dikirim ke WhatsApp!");
+      }
+
+    function resetToHome() {
+      const summaryModal = bootstrap.Modal.getInstance(document.getElementById("summaryModal"));
+      if (summaryModal) summaryModal.hide();
+      showToast("Yuk lanjut belanja lagi!");
+    }
 
     function populateCategoryFilter(data) {
       const select = document.getElementById("category-filter");
@@ -552,8 +977,13 @@ modal.show();
 
     document.getElementById("search-input").addEventListener("input", filterProducts);
     document.getElementById("sort-by").addEventListener("change", filterProducts);
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      handleLogin();
+    });
 
-    fetch('Barang.json')
+
+    fetch('https://gudang.skytama.com/api/public-barang')
       .then(res => {
         if (!res.ok) throw new Error("Gagal memuat Barang.json");
         return res.json();
