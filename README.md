@@ -8,3 +8,16 @@ Fitur yang tersedia :
 6. Modal detail
 7. Pagination (Halaman Produk)
 8. Tambah dan kurangi item
+
+Update 7/21/2025
+Feature: 
++ Login form
++ Checkout
++ Ringkasan 
++ Menyambungkan ke WhatsApp
+
+Perbaikan:
+- Ukuran gambar
+- Notif toast otomatis tertutup dalam 1,5 detik
+- Validasi stok
+- Layout responsif
