@@ -61,15 +61,8 @@ npx serve
 python3 -m http.server
 Akses di browser melalui http://localhost:PORT/
 
-## 📝 Progress PKL 29/7/2025
-- ✅ Bug Fix
-- ✅ Penyesuaian harga jual
-- ✅ Responsive layout
-- ✅ Penghapusan tombol detail
-- ✅ Carousel untuk foto ganda
-- ✅ Penataan ulang search + filter + cart
-- ✅ Visual pagination dan notifikasi toast
-- ✅ Hapus & ubah sistem sort ke dalam modal
+## 🧑‍💻 Catatan PKL (Progress Harian)
+Lihat changelog di CHANGELOG.md
 
 ## 📬 Kontak & Kredit
 Dibuat oleh: Alhayu Navisa
