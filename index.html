@@ -12,11 +12,17 @@
       font-family: 'Segoe UI', sans-serif;
     }
     .search-container {
+      position: sticky;
+      top: 0;
+      z-index: 1055;
+      background-color: #f6f6fa;
       padding: 1rem;
+      margin-bottom: 1rem;
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .search-box {
       max-width: 780px;
@@ -109,65 +115,83 @@
       white-space: nowrap;
     }
     @media (max-width: 576px) {
-      .table td, .table th {
+      body {
+        font-size: 14px;
+      }
+
+      .search-container {
+        padding: 0.75rem;
+        gap: 0.5rem;
+      }
+
+      .product-card h5 {
+        font-size: 15px;
+      }
+
+      .product-card p {
+        font-size: 13px;
+      }
+
+      .table td,
+      .table th {
         white-space: normal;
       }
-    }
-    @media (max-width: 576px) {
+
       .product-image {
-        height: 150px;
+        height: 140px;
       }
-    }
-    @media (max-width: 576px) {
+
+      #product-list > .col-12 {
+        width: 50%;
+        flex: 0 0 auto;
+      }
+
       .form-control,
       .form-select,
       .btn {
-        font-size: 14px;
-        padding: 8px 12px;
+        font-size: 12px;
+        padding: 6px 10px;
       }
-    }
-    @media (max-width: 576px) {
+
       .modal-dialog.modal-xl {
-        width: 95% !important;
+        width: 98% !important;
         margin: auto;
       }
-    }
-    @media (max-width: 576px) {
+
+      .modal .form-label {
+        font-size: 13px;
+      }
+
       td {
         font-size: x-small;
       }
+
       .cart-item-controls .btn {
         padding: 4px 6px;
-        font-size: 12px;
+        font-size: 11px;
       }
+
       .cart-item-controls input {
         font-size: 12px;
-        width: 50px;
+        width: 45px;
       }
-    }
-    @media (max-width: 576px) {
-        .toast-container {
-          bottom: 1rem !important;
-          right: 50% !important;
-          transform: translateX(50%);
-          width: 90vw;
-          padding: 0;
-        }
 
-        #cartToast {
-          width: 100%;
-          font-size: 0.9rem;
-        }
+      .toast-container {
+        bottom: 1rem !important;
+        right: 50% !important;
+        transform: translateX(50%);
+        width: 90vw;
+        padding: 0;
+      }
 
-        #cartToast .toast-body {
-          padding: 0.75rem 1rem;
-        }
-    }
-    @media (max-width: 576px) {
-        .btn {
-          font-size: 14px;
-          padding: 8px 12px;
-        }
+      #cartToast {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      #cartToast .toast-body {
+        padding: 0.75rem 1rem;
+      }
     }
 
   </style>
@@ -378,7 +402,7 @@
               <h5>${product.nama_barang}</h5>
               <p class="text-muted">${product.deskripsi || ''}</p>
               <p><strong>Kategori:</strong> ${kategori}</p>
-              <p><strong>Harga Jual:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
+              <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
               <p><strong>Stok:</strong> ${product.stok}</p>
               <button class="btn btn-purple mt-auto" onclick='showProductDetail(${JSON.stringify(product)})'>Detail</button>
             </div>
@@ -612,6 +636,7 @@
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     showCart();
+    clearModalBackdrop();
   }
 
   function decreaseQuantity(id) {
@@ -625,6 +650,7 @@
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartCount();
       showCart();
+      clearModalBackdrop();
     }
   }
 
@@ -634,6 +660,7 @@
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     showCart();
+    clearModalBackdrop();
   }
 
     function clearCart() {
@@ -646,7 +673,14 @@
 
       setTimeout(() => {
         document.getElementById("cartModalBody").innerHTML = "<p class='text-muted'>Keranjang masih kosong.</p>";
-      }, 500); 
+        clearModalBackdrop();
+      }, 300); 
+    }
+
+    function clearModalBackdrop() {
+      document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+      document.body.classList.remove('modal-open');
+      document.body.style = '';
     }
 
     function handleLogin() {
@@ -674,12 +708,6 @@
 
       if (!pelanggan || !pelanggan.name || !pelanggan.phone || !pelanggan.email) {
         showToast("Login dulu yuk baru checkout!", true);
-        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-        loginModal.show();
-        return;
-      }
-
-      if (!pelanggan || !pelanggan.name || !pelanggan.phone || !pelanggan.email) {
         const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
         loginModal.show();
         return;
