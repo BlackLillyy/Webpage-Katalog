@@ -1,29 +1,78 @@
-# Webpage-Katalog
-Fitur yang tersedia :
-1. Search bar
-2. Sorting (Sort by) > dihilangkan
-3. Filter (Kategori, sub kategori, harga, sort by price)
-4. Keranjang (Cart)
-5. Toast Notif
-6. Modal detail
-7. Pagination (Halaman Produk) + Prev dan Next
-8. Tambah dan kurangi item
-9. Login form
-10. Checkout modal
-11. Halaman ringkasan pesanan
+# Webpage Katalog Produk
 
-Update 29/7/2025
-Maintenance:
-- Perbaikan bug
-- Harga jual > Harga
-- Search dan Filter position
-- Perubahan layout untuk penggunaan di mobile
-- Menghilangkan button detail
-- Meringkas keterangan di display
-- Carousel untuk foto lebih dari 1
-- Mensejajarkan Search box, filter dan cart menjadi satu baris
-- Hapus fitur sort by
-- Menambahkan sort harga di dalam modal filter
-- Ganti teks dalam button filter menjadi logo
-- Perubahan visual pagination
-- Cek bug pada notif toast
+Katalog produk interaktif berbasis web yang dibangun untuk kebutuhan proyek PKL. Website ini menampilkan daftar barang dengan fitur pencarian, filter, dan keranjang belanja. Dibuat dengan fokus pada pengalaman pengguna yang responsif dan sederhana.
+
+---
+
+## 🚀 Demo
+
+🔗 [Lihat versi demo online](https://blacklillyy.github.io/Webpage-Katalog/)
+
+---
+
+## ✨ Fitur Utama
+
+- 🔍 Pencarian produk real-time berdasarkan nama atau kode
+- 🗂️ Filter berdasarkan harga, kategori, dan subkategori
+- 💸 Sort harga termurah/termahal di dalam modal filter
+- 📷 Carousel untuk produk dengan lebih dari 1 gambar
+- 🛒 Tambah ke keranjang dengan jumlah stok real-time
+- 🔔 Notifikasi toast (termasuk validasi saat belum login)
+- 📱 Tampilan responsive di semua ukuran layar
+
+---
+
+## ⚙️ Teknologi yang Digunakan
+
+- HTML5
+- CSS3
+- JavaScript (vanilla)
+- [Bootstrap 5](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
+- API publik dari [gudang.skytama.com](https://gudang.skytama.com)
+
+---
+
+## 📁 Struktur Folder
+
+/
+├── index.html
+├── style.css
+├── script.js
+├── /assets
+│ └── gambar dan ikon
+
+---
+
+## 🛠️ Cara Menjalankan Secara Lokal
+
+> ⚠️ Jangan buka file langsung lewat `file:///` karena `fetch()` akan gagal.
+
+1. Clone repo:
+   ```bash
+   git clone https://github.com/BlackLillyy/Webpage-Katalog.git
+Jalankan lokal dengan:
+
+Ekstensi Live Server (jika pakai VSCode), atau
+
+Jalankan di server lokal:
+npx serve
+# atau
+python3 -m http.server
+Akses di browser melalui http://localhost:PORT/
+
+📝 Progress PKL 29/7/2025
+✅ Bug Fix
+✅ Penyesuaian harga jual
+✅ Responsive layout
+✅ Penghapusan tombol detail
+✅ Carousel untuk foto ganda
+✅ Penataan ulang search + filter + cart
+✅ Visual pagination dan notifikasi toast
+✅ Hapus & ubah sistem sort ke dalam modal
+
+📬 Kontak & Kredit
+Dibuat oleh: Alhayu Navisa
+📧 GitHub - @BlackLillyy
+🎓 Untuk keperluan PKL (Praktik Kerja Lapangan)
+— feel free to fork or ask! 🙌
