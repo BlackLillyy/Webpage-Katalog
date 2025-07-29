@@ -91,16 +91,12 @@
       transform: scale(1);
       opacity: 1;
     }
-    .btn-purple {
-      background-color: #8a73ff;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      padding: 10px 24px;
-      margin-top: 1rem;
-    }
-    .btn-purple:hover {
-      background-color: #7a63e6;
+    .square-button {
+      width: 45px;
+      height: 45px;
+      padding: 0;
+      font-size: 18px;
+      line-height: 1;
     }
     input.form-control,
     select.form-select,
@@ -114,6 +110,10 @@
     .table td, .table th {
       white-space: nowrap;
     }
+    .pagination .page-link {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
     @media (max-width: 576px) {
       body {
         font-size: 14px;
@@ -124,6 +124,17 @@
         gap: 0.5rem;
       }
 
+      .search-box {
+        max-width: 270px;
+        width: 100%;
+      }
+
+      .square-button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
       .product-card h5 {
         font-size: 15px;
       }
@@ -131,6 +142,17 @@
       .product-card p {
         font-size: 13px;
       }
+
+      .product-card {
+        cursor: pointer;
+        transition: all 0.2s;
+      }      
+
+      .product-card:hover,
+      .product-card:active {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      }      
 
       .table td,
       .table th {
@@ -203,17 +225,12 @@
       <i class="fas fa-search"></i>
       <input type="text" id="search-input" class="form-control" placeholder="Cari nama atau kode barang...">
     </div>
-    <select id="sort-by" class="form-select w-auto">
-      <option value="">Urutkan</option>
-      <option value="az">A-Z</option>
-      <option value="za">Z-A</option>
-      <option value="harga_asc">Harga Termurah</option>
-      <option value="harga_desc">Harga Termahal</option>
-    </select> 
-    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#filterModal">Filter</button>
+    <button class="btn btn-outline-primary square-button" data-bs-toggle="modal" data-bs-target="#filterModal" title="Filter Produk">
+      <i class="fas fa-filter fa-lg"></i>
+    </button>
     <div class="position-relative">
-      <button class="btn btn-outline-success position-relative" onclick="showCart()" id="cart-button" title="Lihat Keranjang">
-        <i class="fas fa-shopping-cart fa-2x"></i>
+      <button class="btn btn-outline-success square-button position-relative" onclick="showCart()" id="cart-button" title="Lihat Keranjang">
+        <i class="fas fa-shopping-cart fa-xl"></i>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">
           0
         </span>
@@ -226,7 +243,8 @@
     <p class="text-center text-muted" id="result-count"></p>
   </div>
 
-  <div class="pagination-container text-center my-4" id="pagination"></div>
+    <div class="pagination-container text-center my-4" id="pagination"></div>
+</div>
 
   <div class="modal fade" id="filterModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -255,6 +273,14 @@
               <label for="subcategory-filter" class="form-label">Sub Kategori</label>
               <select id="subcategory-filter" class="form-select">
                 <option value="">Semua Sub Kategori</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="sort-filter" class="form-label">Urutkan Harga</label>
+              <select id="sort-filter" class="form-select">
+                <option value="">Semua Harga</option>
+                <option value="harga_asc">Harga Termurah</option>
+                <option value="harga_desc">Harga Termahal</option>
               </select>
             </div>
           </div>
@@ -396,15 +422,14 @@
         const kategori = product.kategori || "Tanpa kategori";
 
         const card = `
-          <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex">
+          <div class="col-12 col-sm-4 col-md-4 col-lg-4 d-flex"
+                onclick='showProductDetail(${JSON.stringify(product)})'
+                style="cursor: pointer;" >
             <div class="product-card w-100 d-flex flex-column">
               <img src="${linkGalery}${img}" alt="${product.nama_barang}" class="product-image mb-1">
               <h5>${product.nama_barang}</h5>
-              <p class="text-muted">${product.deskripsi || ''}</p>
-              <p><strong>Kategori:</strong> ${kategori}</p>
               <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
               <p><strong>Stok:</strong> ${product.stok}</p>
-              <button class="btn btn-purple mt-auto" onclick='showProductDetail(${JSON.stringify(product)})'>Detail</button>
             </div>
           </div>`;
         container.innerHTML += card;
@@ -417,17 +442,56 @@
       const totalPages = Math.ceil(total / productsPerPage);
       const pagination = document.getElementById("pagination");
       pagination.innerHTML = "";
-      for (let i = 1; i <= totalPages; i++) {
-        const btn = document.createElement("button");
-        btn.className = `btn ${i === currentPage ? 'btn-primary' : 'btn-outline-primary'} btn-sm mx-1`;
-        btn.textContent = i;
-        btn.onclick = () => {
-          currentPage = i;
-          renderProducts(filteredProducts);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (totalPages <= 1) return;
+
+      const ul = document.createElement("ul");
+      ul.className = "pagination justify-content-center flex-wrap";
+
+      const createItem = (text, page, disabled = false, active = false) => {
+        const li = document.createElement("li");
+        li.className = `page-item ${disabled ? "disabled" : ""} ${active ? "active" : ""}`;
+
+        const a = document.createElement("a");
+        a.className = "page-link";
+        a.href = "#";
+        a.textContent = text;
+
+        a.onclick = (e) => {
+          e.preventDefault();
+          if (!disabled && !active) {
+            currentPage = page;
+            renderProducts(filteredProducts);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
         };
-        pagination.appendChild(btn);
+
+        li.appendChild(a);
+        return li;
+      };
+
+      ul.appendChild(createItem("Previous", currentPage - 1, currentPage === 1));
+
+      for (let i = 1; i <= totalPages; i++) {
+        if (
+          i === 1 || 
+          i === totalPages || 
+          (i >= currentPage - 1 && i <= currentPage + 1)
+        ) {
+          ul.appendChild(createItem(i, i, false, i === currentPage));
+        } else if (
+          i === currentPage - 2 || 
+          i === currentPage + 2
+        ) {
+          const li = document.createElement("li");
+          li.className = "page-item disabled";
+          li.innerHTML = `<span class="page-link">...</span>`;
+          ul.appendChild(li);
+        }
       }
+
+      ul.appendChild(createItem("Next", currentPage + 1, currentPage === totalPages));
+      pagination.appendChild(ul);
     }
 
     function showProductDetail(product) {
@@ -448,14 +512,36 @@
       modalBody.innerHTML = `
         <div class="row g-3">
           <div class="col-md-5">
-            <img src="${img}" alt="${product.nama_barang}" class="img-fluid rounded">
+            ${product.galeri && product.galeri.length > 1 ? `
+              <div id="carouselDetail" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  ${product.galeri.map((g, i) => `
+                    <div class="carousel-item ${i === 0 ? 'active' : ''}">
+                      <img src="https://gudang.skytama.com/storage/${g.file_path}" 
+                          class="d-block w-100 rounded img-fluid" 
+                          alt="Foto ${i + 1}">
+                    </div>
+                  `).join('')}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDetail" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Sebelumnya</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDetail" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Berikutnya</span>
+                </button>
+              </div>
+            ` : `
+              <img src="${img}" class="img-fluid rounded" alt="${product.nama_barang}">
+            `}
           </div>
           <div class="col-md-7">
             <p><strong>Nama Barang:</strong> ${product.nama_barang}</p>
+            <p><strong>Deskripsi:</strong><br>${product.deskripsi || '-'}</p>
             <p><strong>Kategori:</strong> ${product.kategori || 'Tanpa kategori'}</p>
             <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
             <p><strong>Stok:</strong> ${stokLabel}</p>
-            <p><strong>Deskripsi:</strong><br>${product.deskripsi || '-'}</p>
             
           <div class="d-flex justify-content-between align-items-center my-2">
             <div class="input-group" style="width: 130px; max-width: 100%;">
@@ -1013,7 +1099,7 @@
         return matchKeyword && matchCategory && matchPrice && matchSubCategory;
       });
 
-      const sortBy = document.getElementById("sort-by").value;
+      const sortBy = document.getElementById("sort-filter").value;
       filteredProducts = sortProducts(filteredProducts, sortBy);
 
       currentPage = 1;
@@ -1041,14 +1127,13 @@
       document.getElementById("subcategory-filter").value = "";
       document.getElementById("min-price").value = "";
       document.getElementById("max-price").value = "";
-      document.getElementById("sort-by").value = "";
+      document.getElementById("sort-filter").value = "";
       filteredProducts = [...products];
       currentPage = 1;
       renderProducts(filteredProducts);
     }
 
     document.getElementById("search-input").addEventListener("input", filterProducts);
-    document.getElementById("sort-by").addEventListener("change", filterProducts);
     document.getElementById("loginForm").addEventListener("submit", function(e) {
       e.preventDefault();
       handleLogin();
