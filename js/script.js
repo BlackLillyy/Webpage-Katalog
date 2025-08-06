@@ -30,8 +30,21 @@
             <div class="product-card w-100 d-flex flex-column">
               <img src="${linkGalery}${img}" alt="${product.nama_barang}" class="product-image mb-1">
               <h5>${product.nama_barang}</h5>
-              <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
+              <div class="harga-wrapper">
+              <strong>Harga:</strong>
+                ${
+                  product.harga_lama &&
+                  product.harga_lama > product.harga_jual
+                    ? `
+                      <span class="harga-baru">Rp ${parseInt(product.harga_jual).toLocaleString()}</span>                    
+                      <span class="harga-lama">Rp ${parseInt(product.harga_lama).toLocaleString()}</span>
+                      <span class="badge-diskon">-${Math.round(100 * (1 - product.harga_jual / product.harga_lama))}%</span>
+                    `
+                    : `<span class="harga-baru">Rp ${parseInt(product.harga_jual).toLocaleString()}</span>`
+                }
+              </div>
               <p><strong>Stok:</strong> ${product.stok}</p>
+              <p><strong>Terjual:</strong> ${product.terjual || 0}</p>
             </div>
           </div>`;
         container.innerHTML += card;
@@ -142,8 +155,21 @@
             <p><strong>Nama Barang:</strong> ${product.nama_barang}</p>
             <p><strong>Deskripsi:</strong><br>${product.deskripsi || '-'}</p>
             <p><strong>Kategori:</strong> ${product.kategori || 'Tanpa kategori'}</p>
-            <p><strong>Harga:</strong> Rp ${parseInt(product.harga_jual).toLocaleString()}</p>
+            <div class="harga-wrapper">
+            <strong>Harga:</strong>
+              ${
+                product.harga_lama &&
+                product.harga_lama > product.harga_jual
+                  ? `
+                    <span class="harga-baru">Rp ${parseInt(product.harga_jual).toLocaleString()}</span>
+                    <span class="harga-lama">Rp ${parseInt(product.harga_lama).toLocaleString()}</span>
+                    <span class="badge-diskon">-${Math.round(100 * (1 - product.harga_jual / product.harga_lama))}%</span>
+                  `
+                  : `<span class="harga-baru">Rp ${parseInt(product.harga_jual).toLocaleString()}</span>`
+              }
+            </div>
             <p><strong>Stok:</strong> ${stokLabel}</p>
+            <p><strong>Terjual:</strong> ${product.terjual || 0}</p>
             
           <div class="d-flex justify-content-between align-items-center my-2">
             <div class="input-group" style="width: 130px; max-width: 100%;">
@@ -465,15 +491,6 @@
           <textarea class="form-control" id="catatanCheckout" rows="2" placeholder="(Opsional) Tambahan catatan..."></textarea>
         </div>
 
-        <div class="row g-3 mb-3">
-          <div class="col-md-6">
-            <label for="jasaKirim" class="form-label"><strong>Opsi Pengiriman</strong></label>
-            <select id="jasaKirim" class="form-select">
-              <option value="" disabled selected>Pilih Jasa Kirim</option>
-              <option value="JNE">JNE</option>
-              <option value="J&T">J&T</option>
-            </select>
-          </div>
           <div class="col-md-6">
             <label for="pembayaran" class="form-label"><strong>Metode Pembayaran</strong></label>
             <select id="pembayaran" class="form-select">
@@ -517,10 +534,9 @@
     function submitOrder() {
       const alamat = document.getElementById("alamatCheckout")?.value.trim();
       const catatan = document.getElementById("catatanCheckout")?.value.trim() || "-";
-      const jasaKirim = document.getElementById("jasaKirim")?.value;
       const pembayaran = document.getElementById("pembayaran")?.value;
 
-      if (!alamat || !jasaKirim || !pembayaran) {
+      if (!alamat || !pembayaran) {
         showToast("Mohon lengkapi semua data checkout!", true);
         return;
       }
@@ -551,7 +567,6 @@
       });
 
       pesan += `\n*Total Pembayaran:* Rp ${total.toLocaleString()}\n`;
-      pesan += `*Pengiriman:* ${jasaKirim}\n`;
       pesan += `*Pembayaran:* ${pembayaran}\n`;
 
       window.latestOrderMessage = pesan;
@@ -600,8 +615,7 @@
                 <td><strong>Rp ${total.toLocaleString()}</strong></td>
               </tr>
               <tr>
-                <td colspan="2"><strong>Pengiriman</strong>: ${jasaKirim}</td>
-                <td colspan="3"><strong>Pembayaran</strong>: ${pembayaran}</td>
+                <td colspan="6"><strong>Pembayaran</strong>: ${pembayaran}</td>
               </tr>
             </tfoot>
           </table>
@@ -613,7 +627,6 @@
 
       document.getElementById("alamatCheckout").value = "";
       document.getElementById("catatanCheckout").value = "";
-      document.getElementById("jasaKirim").selectedIndex = 0;
       document.getElementById("pembayaran").selectedIndex = 0;
 
       const cartModal = bootstrap.Modal.getInstance(document.getElementById("cartModal"));

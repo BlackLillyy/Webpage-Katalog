@@ -105,6 +105,38 @@
       padding: 6px 12px;
       font-size: 14px;
     }
+    .text-decoration-line-through {
+      text-decoration: line-through;
+    }
+    .harga-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem; /* jarak antar elemen */
+      margin-bottom: 0.25rem; /* minimal jarak bawah */
+    }
+    .harga-wrapper strong {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .harga-lama {
+      text-decoration: line-through;
+      color: #888;
+      font-size: 0.85rem;
+    }
+    .harga-baru {
+      font-weight: bold;
+      color: #000;
+      font-size: 0.95rem;
+    }
+    .badge-diskon {
+      background-color: #dc3545;
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
     @media (max-width: 576px) {
       body {
         font-size: 14px;
@@ -204,5 +236,22 @@
 
       #cartToast .toast-body {
         padding: 0.75rem 1rem;
+      }
+      .harga-wrapper {
+        gap: 0.2rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .harga-lama {
+        font-size: 0.75rem;
+      }
+
+      .harga-baru {
+        font-size: 0.85rem;
+      }
+
+      .badge-diskon {
+        font-size: 0.65rem;
+        padding: 2px 5px;
       }
     }
