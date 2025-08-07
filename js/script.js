@@ -17,10 +17,10 @@
       }
 
       paginated.forEach(product => {
-        const linkGalery = "https://gudang.skytama.com/storage/"
+        const linkGalery = ENV.IMAGE_BASE_URL;
         const img = product.galeri?.[0]?.file_path
           ? product.galeri[0].file_path
-          : "https://via.placeholder.com/280x180?text=No+Image";
+          : ENV.PLACEHOLDER_IMAGE;
         const kategori = product.kategori || "Tanpa kategori";
 
         const card = `
@@ -115,8 +115,8 @@
       const modalBody = document.getElementById("productDetailBody");
 
       const img = (product.galeri && product.galeri.length > 0 && product.galeri[0].file_path)
-        ? `https://gudang.skytama.com/storage/${product.galeri[0].file_path}`
-        : "https://via.placeholder.com/280x180?text=No+Image";
+        ? `${ENV.IMAGE_BASE_URL}${product.galeri[0].file_path}`
+        : ENV.PLACEHOLDER_IMAGE;
 
       const stokLabel = parseInt(product.stok) <= 3
         ? `<span class="badge bg-danger">Stok hampir habis!</span>`
@@ -132,7 +132,7 @@
                 <div class="carousel-inner">
                   ${product.galeri.map((g, i) => `
                     <div class="carousel-item ${i === 0 ? 'active' : ''}">
-                      <img src="https://gudang.skytama.com/storage/${g.file_path}" 
+                      <img src="${ENV.IMAGE_BASE_URL}${g.file_path}" 
                           class="d-block w-100 rounded img-fluid" 
                           alt="Foto ${i + 1}">
                     </div>
@@ -219,8 +219,8 @@
         existing.jumlah += qty;
       } else {
         const gambar = (product.galeri && product.galeri[0]?.file_path)
-        ? `https://gudang.skytama.com/storage/${product.galeri[0].file_path}`
-        : "https://via.placeholder.com/50";
+        ? `${ENV.IMAGE_BASE_URL}${product.galeri[0].file_path}`
+        : ENV.PLACEHOLDER_IMAGE;
 
         cart.push({
           id: product.id,
@@ -450,7 +450,7 @@
         total += subtotal;
         return `
           <tr>
-            <td><img src="${item.gambar || 'https://via.placeholder.com/50'}" alt="${item.nama_barang}" style="width: 50px; height: 50px; object-fit: cover;"></td>
+            <td><img src="${item.gambar || ENV.PLACEHOLDER_IMAGE}" alt="${item.nama_barang}" style="width: 50px; height: 50px; object-fit: cover;"></td>
             <td>${item.nama_barang}</td>
             <td>${item.jumlah}</td>
             <td>Rp ${item.harga_jual.toLocaleString()}</td>
@@ -598,7 +598,7 @@
         const subtotal = item.harga_jual * item.jumlah;
         htmlSummary += `
           <tr>
-            <td><img src="${item.gambar || 'https://via.placeholder.com/50'}" style="width: 50px; height: 50px; object-fit: cover;" alt="gambar produk"></td>
+            <td><img src="${item.gambar || ENV.PLACEHOLDER_IMAGE}" style="width: 50px; height: 50px; object-fit: cover;" alt="gambar produk"></td>
             <td>${item.nama_barang}</td>
             <td>${item.jumlah}</td>
             <td>Rp ${item.harga_jual.toLocaleString()}</td>
@@ -639,7 +639,7 @@
 
       function lanjutWhatsApp() {
         const encoded = encodeURIComponent(window.latestOrderMessage || "");
-        const waUrl = `https://wa.me/6285608902857?text=${encoded}`;
+        const waUrl = `https://wa.me/${ENV.WHATSAPP_NUMBER}?text=${encoded}`;
         window.open(waUrl, "_blank");
         setTimeout(() => {
           btn.disabled = false;
@@ -755,7 +755,7 @@
     });
 
 
-    fetch('https://gudang.skytama.com/api/public-barang')
+    fetch(ENV.API_URL)
       .then(res => {
         if (!res.ok) throw new Error("Gagal memuat Barang.json");
         return res.json();
