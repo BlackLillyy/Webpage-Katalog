@@ -50,7 +50,7 @@ Katalog produk interaktif berbasis web yang dibangun untuk kebutuhan proyek PKL.
 │
 ├── 📄 README.md               # Dokumentasi proyek
 └── 📄 CHANGELOG.md            # Catatan perubahan proyek
-
+```
 ---
 
 ## 🛠️ Cara Menjalankan Secara Lokal
@@ -70,7 +70,7 @@ npx serve
 python3 -m http.server
 Akses di browser melalui http://localhost:PORT/
 
-## 🛡️
+## 🛡️ Keamanan
 File `js/config.js` tidak diikutsertakan karena berisi konfigurasi lokal.
 Silakan salin `config.sample.js` menjadi `config.js` lalu isi sesuai kebutuhan:
 $ cp js/config.sample.js js/config.js
