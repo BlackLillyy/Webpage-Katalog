@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <div class="search-container">
+  <div class="search-container bg-white">
     <div class="search-box">
       <i class="fas fa-search"></i>
       <input type="text" id="search-input" class="form-control" placeholder="Cari nama atau kode barang...">
@@ -28,13 +28,22 @@
     </div>
   </div>
 
+  <div class="sort-bar d-flex align-items-center gap-3 px-3 py-2 bg-white border-bottom">
+    <button class="sort-btn active" data-sort="populer">Populer</button>
+    <button class="sort-btn" data-sort="terbaru">Terbaru</button>
+    <button class="sort-btn" data-sort="terlaris">Terlaris</button>
+    <button class="sort-btn" data-sort="harga">Harga <span class="sort-arrow">⇅</span></button>
+  </div>
+
   <div class="container">
     <div class="row g-3 g-md-4 align-items-stretch" id="product-list"></div>
     <p class="text-center text-muted" id="result-count"></p>
   </div>
 
     <div class="pagination-container text-center my-4" id="pagination"></div>
-</div>
+    <div class="text-center mt-4">
+      <a href="barang-habis.html" class="btn btn-outline-secondary mb-2">Lihat Barang Habis</a>
+    </div>
 
   <div class="modal fade" id="filterModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -63,14 +72,6 @@
               <label for="subcategory-filter" class="form-label">Sub Kategori</label>
               <select id="subcategory-filter" class="form-select">
                 <option value="">Semua Sub Kategori</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="sort-filter" class="form-label">Urutkan Harga</label>
-              <select id="sort-filter" class="form-select">
-                <option value="">Semua Harga</option>
-                <option value="harga_asc">Harga Termurah</option>
-                <option value="harga_desc">Harga Termahal</option>
               </select>
             </div>
           </div>

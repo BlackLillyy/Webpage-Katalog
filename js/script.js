@@ -1,3 +1,4 @@
+    let currentSort = { type: 'populer', order: 'desc' };
     let products = [], filteredProducts = [], currentPage = 1;
     const productsPerPage = 12;
 
@@ -714,11 +715,8 @@
         return matchKeyword && matchCategory && matchPrice && matchSubCategory;
       });
 
-      const sortBy = document.getElementById("sort-filter").value;
-      filteredProducts = sortProducts(filteredProducts, sortBy);
-
       currentPage = 1;
-      renderProducts(filteredProducts);
+      applySort();
     }
 
     function sortProducts(list, sortBy) {
@@ -727,14 +725,46 @@
           return list.sort((a, b) => a.nama_barang.toLowerCase().localeCompare(b.nama_barang.toLowerCase()));
         case "za":
           return list.sort((a, b) => b.nama_barang.toLowerCase().localeCompare(a.nama_barang.toLowerCase()));
-        case "harga_asc":
-          return list.sort((a, b) => parseInt(a.harga_jual) - parseInt(b.harga_jual));
-        case "harga_desc":
-          return list.sort((a, b) => parseInt(b.harga_jual) - parseInt(a.harga_jual));
         default:
           return list;
       }
     }
+
+    function applySort() {
+      let list = [...filteredProducts];
+
+      switch (currentSort.type) {
+        case 'terbaru':
+          list.sort((a, b) => {
+            const dateA = new Date(a.created_at);
+            const dateB = new Date(b.created_at);
+            return currentSort.order === 'asc' ? dateA - dateB : dateB - dateA;
+          });
+          break;
+        case 'terlaris':
+          list.sort((a, b) => {
+            const soldA = parseInt(a.terjual) || 0;
+            const soldB = parseInt(b.terjual) || 0;
+            return currentSort.order === 'asc' ? soldA - soldB : soldB - soldA;
+          });
+          break;
+        case 'harga':
+          list.sort((a, b) => {
+            const priceA = parseInt(a.harga_jual) || 0;
+            const priceB = parseInt(b.harga_jual) || 0;
+            return currentSort.order === 'asc' ? priceA - priceB : priceB - priceA;
+          });
+          break;
+        case 'populer':
+        default:
+          list = products.filter(p => filteredProducts.includes(p));
+          break;
+      }
+
+      filteredProducts = list;
+      currentPage = 1;
+      renderProducts(filteredProducts);
+    }    
 
     function resetFilters() {
       document.getElementById("search-input").value = "";
@@ -754,6 +784,37 @@
       handleLogin();
     });
 
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const type = this.getAttribute('data-sort');
+
+        if (currentSort.type === type) {
+          currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.type = type;
+          currentSort.order = 'desc'; 
+        }
+
+        document.querySelectorAll('.sort-btn').forEach(b => {
+          b.classList.remove('active','asc','desc');
+          const arrow = b.querySelector('.sort-arrow');
+          if (arrow) arrow.textContent = '⇅';
+        });
+
+        this.classList.add('active');
+        if (currentSort.order === 'asc') {
+          this.classList.add('asc');
+          const arrow = this.querySelector('.sort-arrow');
+          if (arrow) arrow.textContent = '↑';
+        } else {
+          this.classList.add('desc');
+          const arrow = this.querySelector('.sort-arrow');
+          if (arrow) arrow.textContent = '↓';
+        }
+
+        applySort();
+      });
+    });    
 
     fetch(ENV.API_URL)
       .then(res => {
@@ -761,11 +822,11 @@
         return res.json();
       })
       .then(data => {
-        products = data;
+        products = data.filter(p => parseInt(p.stok) > 0);
         filteredProducts = [...products];
         populateCategoryFilter(products);
         populateSubcategoryFilter(products);
-        renderProducts(filteredProducts);
+        applySort();
         updateCartCount();
 
       })
