@@ -33,14 +33,23 @@ Katalog produk interaktif berbasis web yang dibangun untuk kebutuhan proyek PKL.
 
 ---
 
-## 📁 Struktur Folder
-
-/
-├── index.html
-├── style.css
-├── script.js
-├── /assets
-│ └── gambar dan ikon
+## 📂 Struktur Folder
+```plaintext
+📦 project-root/
+├── 📄 index.html              # Halaman katalog utama
+├── 📄 barang-habis.html       # Halaman daftar produk stok habis
+│
+├── 📂 js/
+│   ├── 📄 script.js           # Script utama katalog
+│   ├── 📄 outofstock.js       # Script khusus barang habis
+│   ├── 📄 config.js           # Konfigurasi API & path gambar
+│   └── 📄 config.sample.js    # Contoh file konfigurasi
+│
+├── 📂 css/
+│   └── 📄 style.css           # Style global
+│
+├── 📄 README.md               # Dokumentasi proyek
+└── 📄 CHANGELOG.md            # Catatan perubahan proyek
 
 ---
 
