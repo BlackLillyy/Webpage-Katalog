@@ -1,28 +1,41 @@
 [
   {
+    "id": 107,
+    "kategori": "Lain-lain",
+    "nama_barang": "Splice",
+    "stok": 622,
+    "terjual": 49,
+    "harga_jual": "4200",
+    "harga_lama": "7000",
+    "deskripsi": "1x Splice",
+    "created_at": "2024-10-18T09:24:53.000000Z",
+    "updated_at": "2025-08-15T01:43:13.000000Z",
+    "galeri": []
+  },
+  {
     "id": 175,
     "kategori": "Kabel",
     "nama_barang": "Kabel Fiber 1c Mylink roll 2",
-    "stok": 743,
-    "terjual": 106,
+    "stok": 492,
+    "terjual": 357,
     "harga_jual": "715",
     "harga_lama": "780",
     "deskripsi": "Kabel Fiber 1c Mylink roll 2",
     "created_at": "2025-02-28T07:04:22.000000Z",
-    "updated_at": "2025-08-08T08:55:16.000000Z",
+    "updated_at": "2025-08-15T01:43:13.000000Z",
     "galeri": []
   },
   {
     "id": 68,
     "kategori": "Alat Fiber",
     "nama_barang": "Sleeve Besar",
-    "stok": 865,
-    "terjual": 4,
+    "stok": 862,
+    "terjual": 7,
     "harga_jual": "505",
     "harga_lama": null,
     "deskripsi": "Sleeve Besar",
     "created_at": "2024-09-20T01:53:25.000000Z",
-    "updated_at": "2025-08-08T08:55:16.000000Z",
+    "updated_at": "2025-08-15T01:43:13.000000Z",
     "galeri": [
       {
         "id": 7,
@@ -34,29 +47,58 @@
     ]
   },
   {
-    "id": 107,
-    "kategori": "Lain-lain",
-    "nama_barang": "Splice",
-    "stok": 647,
-    "terjual": 24,
-    "harga_jual": "4200",
-    "harga_lama": "7000",
-    "deskripsi": "1x Splice",
-    "created_at": "2024-10-18T09:24:53.000000Z",
-    "updated_at": "2025-08-08T08:55:16.000000Z",
-    "galeri": []
+    "id": 56,
+    "kategori": "Konektor",
+    "nama_barang": "RJ 45",
+    "stok": 215,
+    "terjual": 54,
+    "harga_jual": "575",
+    "harga_lama": null,
+    "deskripsi": "RJ 45",
+    "created_at": "2024-09-20T01:34:04.000000Z",
+    "updated_at": "2025-08-12T08:34:46.000000Z",
+    "galeri": [
+      {
+        "id": 64,
+        "barang_id": 56,
+        "file_path": "gambar_barang/J54Kbl1CFuILNrDTOZGeWvedVoY9cI0Mzqr2pmsN.jpg",
+        "created_at": "2024-10-21T04:00:15.000000Z",
+        "updated_at": "2024-10-21T04:00:15.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "kategori": "Alat LAN",
+    "nama_barang": "Splitter Hitam Female",
+    "stok": 14,
+    "terjual": 5,
+    "harga_jual": "13000",
+    "harga_lama": null,
+    "deskripsi": "Splitter female hitam",
+    "created_at": "2024-09-20T01:56:08.000000Z",
+    "updated_at": "2025-08-10T08:10:02.000000Z",
+    "galeri": [
+      {
+        "id": 65,
+        "barang_id": 71,
+        "file_path": "gambar_barang/4xqMsV7e5YaWXDYGa7RHsBSC7cVBOqjogzNSpCR7.jpg",
+        "created_at": "2024-10-21T04:01:26.000000Z",
+        "updated_at": "2024-10-21T04:01:26.000000Z"
+      }
+    ]
   },
   {
     "id": 178,
     "kategori": "Kabel",
-    "nama_barang": "Kabel Global 2c [2]",
+    "nama_barang": "Kabel Global 2c Global [2]",
     "stok": 702,
     "terjual": 352,
-    "harga_jual": "1188",
-    "harga_lama": "1140",
+    "harga_jual": "1125",
+    "harga_lama": "1125",
     "deskripsi": "Kabel",
     "created_at": "2025-03-27T05:01:47.000000Z",
-    "updated_at": "2025-08-08T08:55:17.000000Z",
+    "updated_at": "2025-08-10T08:35:41.000000Z",
     "galeri": []
   },
   {
@@ -76,13 +118,13 @@
     "id": 2,
     "kategori": "Adaptor",
     "nama_barang": "Adaptor 12V",
-    "stok": 42,
-    "terjual": 2,
+    "stok": 40,
+    "terjual": 4,
     "harga_jual": "18400",
     "harga_lama": "20800",
     "deskripsi": "Adaptor 12v",
     "created_at": "2024-09-19T21:35:57.000000Z",
-    "updated_at": "2025-08-08T07:44:16.000000Z",
+    "updated_at": "2025-08-10T06:43:21.000000Z",
     "galeri": [
       {
         "id": 61,
@@ -94,16 +136,29 @@
     ]
   },
   {
+    "id": 169,
+    "kategori": "Lain-lain",
+    "nama_barang": "Hanger Kabel",
+    "stok": 130,
+    "terjual": 4,
+    "harga_jual": "6600",
+    "harga_lama": null,
+    "deskripsi": "Hanger Kabel",
+    "created_at": "2025-02-08T01:48:06.000000Z",
+    "updated_at": "2025-08-12T08:34:34.000000Z",
+    "galeri": []
+  },
+  {
     "id": 50,
     "kategori": "Kabel",
     "nama_barang": "Patchcord 3M Hijau Fujitomo",
-    "stok": 6,
-    "terjual": 4,
+    "stok": 5,
+    "terjual": 5,
     "harga_jual": "14040",
     "harga_lama": "14400",
     "deskripsi": "Patchcord 3M Hijau",
     "created_at": "2024-09-20T01:25:33.000000Z",
-    "updated_at": "2025-08-08T07:44:16.000000Z",
+    "updated_at": "2025-08-15T01:43:13.000000Z",
     "galeri": [
       {
         "id": 70,
@@ -111,6 +166,299 @@
         "file_path": "gambar_barang/ePsk4NPeBWlhvYorXfVr0ze8ypBj56MFsvkSqh0c.jpg",
         "created_at": "2024-10-21T04:05:22.000000Z",
         "updated_at": "2024-10-21T04:05:22.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "kategori": "Alat Fiber",
+    "nama_barang": "Sleeve Kecil",
+    "stok": 1176,
+    "terjual": 11,
+    "harga_jual": "505",
+    "harga_lama": null,
+    "deskripsi": "Sleeve kecil",
+    "created_at": "2024-09-20T01:55:01.000000Z",
+    "updated_at": "2025-08-12T08:33:28.000000Z",
+    "galeri": [
+      {
+        "id": 8,
+        "barang_id": 70,
+        "file_path": "gambar_barang/xBSqlYBWsKBFvSBfMwCFJAflO58TpZbZqR4ZLljh.jpg",
+        "created_at": "2024-10-20T08:22:23.000000Z",
+        "updated_at": "2024-10-20T08:22:23.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "kategori": "Kabel",
+    "nama_barang": "(Second) Kabel UTP OS",
+    "stok": 356,
+    "terjual": 14,
+    "harga_jual": "16500",
+    "harga_lama": null,
+    "deskripsi": "(Second) Kabel UTP OS 37m",
+    "created_at": "2024-10-21T03:31:46.000000Z",
+    "updated_at": "2025-08-15T01:42:17.000000Z",
+    "galeri": [
+      {
+        "id": 115,
+        "barang_id": 129,
+        "file_path": "gambar_barang/u50Lz8XPdddc9ALP8UPWixWVqmjdu9gSmXqrrOKe.jpg",
+        "created_at": "2024-10-21T08:40:11.000000Z",
+        "updated_at": "2024-10-21T08:40:11.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "kategori": "Alat LAN",
+    "nama_barang": "(Second) Splitter Female",
+    "stok": 10,
+    "terjual": 1,
+    "harga_jual": "5250",
+    "harga_lama": "7070",
+    "deskripsi": "Splitter female putih",
+    "created_at": "2024-09-20T01:57:02.000000Z",
+    "updated_at": "2025-08-15T01:42:17.000000Z",
+    "galeri": [
+      {
+        "id": 45,
+        "barang_id": 72,
+        "file_path": "gambar_barang/wlk3UwT8CqHfc0i4WNg8PH74SqjIKVeYEzLJ6ypY.jpg",
+        "created_at": "2024-10-20T09:36:17.000000Z",
+        "updated_at": "2024-10-20T09:36:17.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "kategori": "Konektor",
+    "nama_barang": "Barel FO Biasa",
+    "stok": 201,
+    "terjual": 38,
+    "harga_jual": "1534",
+    "harga_lama": null,
+    "deskripsi": "Barel FO biasa",
+    "created_at": "2024-09-19T23:59:36.000000Z",
+    "updated_at": "2025-08-10T07:05:34.000000Z",
+    "galeri": [
+      {
+        "id": 86,
+        "barang_id": 10,
+        "file_path": "gambar_barang/CKN9wRasVeVR9nRLRcBSP3gkIP2MFWACeaTVw3mO.jpg",
+        "created_at": "2024-10-21T04:26:15.000000Z",
+        "updated_at": "2024-10-21T04:26:15.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "kategori": "Konektor",
+    "nama_barang": "Fast Connector",
+    "stok": 56,
+    "terjual": 1,
+    "harga_jual": "3075",
+    "harga_lama": "3563",
+    "deskripsi": "Fast Connector",
+    "created_at": "2024-09-20T00:05:40.000000Z",
+    "updated_at": "2025-08-10T06:43:33.000000Z",
+    "galeri": [
+      {
+        "id": 5,
+        "barang_id": 13,
+        "file_path": "gambar_barang/o8J3rOORD88gwpelK8NRFy0SY72cKPDblccyDxy6.jpg",
+        "created_at": "2024-10-20T08:07:55.000000Z",
+        "updated_at": "2024-10-20T08:07:55.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel UTP OS 1",
+    "stok": 0,
+    "terjual": 13,
+    "harga_jual": "2500",
+    "harga_lama": "2800",
+    "deskripsi": "Kabel UTP OS",
+    "created_at": "2024-09-20T01:09:33.000000Z",
+    "updated_at": "2025-08-12T08:39:14.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 40,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel UTP OS 2",
+    "stok": 0,
+    "terjual": 40,
+    "harga_jual": "2500",
+    "harga_lama": "2800",
+    "deskripsi": "Kabel UTP OS 2",
+    "created_at": "2024-09-20T01:10:28.000000Z",
+    "updated_at": "2025-08-12T08:39:14.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 41,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel UTP OS 3",
+    "stok": 2,
+    "terjual": 30,
+    "harga_jual": "2500",
+    "harga_lama": "2800",
+    "deskripsi": "Kabel UTP OS 3",
+    "created_at": "2024-09-20T01:12:38.000000Z",
+    "updated_at": "2025-08-10T06:52:09.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 166,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel UTP OS Sisa",
+    "stok": 42,
+    "terjual": 11,
+    "harga_jual": "2500",
+    "harga_lama": "2800",
+    "deskripsi": "Kabel utp baru",
+    "created_at": "2025-01-02T03:19:12.000000Z",
+    "updated_at": "2025-08-12T08:40:05.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 184,
+    "kategori": "Modem",
+    "nama_barang": "MODEM ONU XPON VSOL 2801RGW",
+    "stok": 0,
+    "terjual": 1,
+    "harga_jual": "226800",
+    "harga_lama": null,
+    "deskripsi": "-",
+    "created_at": "2025-06-04T01:40:29.000000Z",
+    "updated_at": "2025-08-15T01:43:13.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 43,
+    "kategori": "Alat Fiber",
+    "nama_barang": "ODP 16C",
+    "stok": 1,
+    "terjual": 1,
+    "harga_jual": "150700",
+    "harga_lama": null,
+    "deskripsi": "ODP 16",
+    "created_at": "2024-09-20T01:17:07.000000Z",
+    "updated_at": "2025-08-12T08:41:49.000000Z",
+    "galeri": [
+      {
+        "id": 37,
+        "barang_id": 43,
+        "file_path": "gambar_barang/HjLJIVJRulLpegd2dlQn5HXXdau5ctkaaiag0YZU.jpg",
+        "created_at": "2024-10-20T09:20:14.000000Z",
+        "updated_at": "2024-10-20T09:20:14.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 147,
+    "kategori": "Kabel",
+    "nama_barang": "Patchcord 3M Biru Fujitomo",
+    "stok": 1,
+    "terjual": 12,
+    "harga_jual": "14040",
+    "harga_lama": "14400",
+    "deskripsi": "Patchcord 3M Biru Fujitomo",
+    "created_at": "2024-11-25T01:44:46.000000Z",
+    "updated_at": "2025-08-10T07:05:34.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 61,
+    "kategori": "Alat Fiber",
+    "nama_barang": "Roset 4 core Besar",
+    "stok": 10,
+    "terjual": 2,
+    "harga_jual": "19200",
+    "harga_lama": null,
+    "deskripsi": "Roset 4 core B",
+    "created_at": "2024-09-20T01:42:41.000000Z",
+    "updated_at": "2025-08-12T08:33:28.000000Z",
+    "galeri": [
+      {
+        "id": 42,
+        "barang_id": 61,
+        "file_path": "gambar_barang/E801IEkkLRKKUULFQrIbSdknFKRZ8gVBefDVeva2.jpg",
+        "created_at": "2024-10-20T09:30:57.000000Z",
+        "updated_at": "2024-10-20T09:30:57.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "kategori": "Alat Fiber",
+    "nama_barang": "Roset 4 core Kecil",
+    "stok": 6,
+    "terjual": 1,
+    "harga_jual": "16800",
+    "harga_lama": null,
+    "deskripsi": "Roset 4 core K",
+    "created_at": "2024-09-20T01:43:28.000000Z",
+    "updated_at": "2025-08-10T07:05:34.000000Z",
+    "galeri": [
+      {
+        "id": 47,
+        "barang_id": 62,
+        "file_path": "gambar_barang/P8mv3RQPc8Bk21dahmwoShKqigWcgjK6IMyupBdD.jpg",
+        "created_at": "2024-10-20T09:37:06.000000Z",
+        "updated_at": "2024-10-20T09:37:06.000000Z"
+      }
+    ]
+  },
+  {
+    "id": 194,
+    "kategori": "Alat Fiber",
+    "nama_barang": "Roset 8c",
+    "stok": 0,
+    "terjual": 2,
+    "harga_jual": "34800",
+    "harga_lama": null,
+    "deskripsi": "Roset 8c",
+    "created_at": "2025-07-28T01:30:31.000000Z",
+    "updated_at": "2025-08-10T07:05:34.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 148,
+    "kategori": "Konektor",
+    "nama_barang": "Splitter Male",
+    "stok": 15,
+    "terjual": 1,
+    "harga_jual": "13000",
+    "harga_lama": null,
+    "deskripsi": "Splitter Male",
+    "created_at": "2024-11-26T02:20:33.000000Z",
+    "updated_at": "2025-08-12T08:32:55.000000Z",
+    "galeri": []
+  },
+  {
+    "id": 78,
+    "kategori": "Alat Fiber",
+    "nama_barang": "Splitter ratio 25:75",
+    "stok": 2,
+    "terjual": 1,
+    "harga_jual": "48000",
+    "harga_lama": null,
+    "deskripsi": "75 IR : 1.8dB - 25 IR : 6.9dB",
+    "created_at": "2024-09-20T02:06:43.000000Z",
+    "updated_at": "2025-08-12T08:41:49.000000Z",
+    "galeri": [
+      {
+        "id": 108,
+        "barang_id": 78,
+        "file_path": "gambar_barang/fvxgyEJxNTjHxakPHJlDjrSiMYbrGuleizQYAdDg.jpg",
+        "created_at": "2024-10-21T04:50:13.000000Z",
+        "updated_at": "2024-10-21T04:50:13.000000Z"
       }
     ]
   },
@@ -124,7 +472,7 @@
     "harga_lama": null,
     "deskripsi": "Modem XPON ZX-F663NV3a  12V-1A",
     "created_at": "2024-10-19T03:00:34.000000Z",
-    "updated_at": "2025-08-08T07:44:16.000000Z",
+    "updated_at": "2025-08-10T08:51:38.000000Z",
     "galeri": [
       {
         "id": 74,
@@ -188,13 +536,13 @@
     "id": 122,
     "kategori": "Adaptor",
     "nama_barang": "(Second) Adaptor 12v",
-    "stok": 1,
+    "stok": 2,
     "terjual": 0,
     "harga_jual": "12500",
     "harga_lama": "17500",
     "deskripsi": "(Second) Adaptor 12v",
     "created_at": "2024-10-18T10:22:51.000000Z",
-    "updated_at": "2025-08-05T16:50:42.000000Z",
+    "updated_at": "2025-08-15T01:42:17.000000Z",
     "galeri": [
       {
         "id": 98,
@@ -546,27 +894,6 @@
     "galeri": []
   },
   {
-    "id": 129,
-    "kategori": "Kabel",
-    "nama_barang": "(Second) Kabel UTP OS",
-    "stok": 319,
-    "terjual": 0,
-    "harga_jual": "16500",
-    "harga_lama": null,
-    "deskripsi": "(Second) Kabel UTP OS 37m",
-    "created_at": "2024-10-21T03:31:46.000000Z",
-    "updated_at": "2025-08-04T01:54:50.000000Z",
-    "galeri": [
-      {
-        "id": 115,
-        "barang_id": 129,
-        "file_path": "gambar_barang/u50Lz8XPdddc9ALP8UPWixWVqmjdu9gSmXqrrOKe.jpg",
-        "created_at": "2024-10-21T08:40:11.000000Z",
-        "updated_at": "2024-10-21T08:40:11.000000Z"
-      }
-    ]
-  },
-  {
     "id": 133,
     "kategori": "Router",
     "nama_barang": "(Second) Mercusys MW306R",
@@ -680,13 +1007,13 @@
     "id": 98,
     "kategori": "Router",
     "nama_barang": "(Second) Router Tenda N301",
-    "stok": 0,
+    "stok": 1,
     "terjual": 0,
     "harga_jual": "74750",
     "harga_lama": "103500",
     "deskripsi": "(Second) Router Tenda N301",
     "created_at": "2024-10-17T08:56:00.000000Z",
-    "updated_at": "2025-08-05T15:38:54.000000Z",
+    "updated_at": "2025-08-15T01:42:17.000000Z",
     "galeri": [
       {
         "id": 60,
@@ -709,27 +1036,6 @@
     "created_at": "2024-11-27T01:55:44.000000Z",
     "updated_at": "2025-08-06T05:26:37.000000Z",
     "galeri": []
-  },
-  {
-    "id": 72,
-    "kategori": "Alat LAN",
-    "nama_barang": "(Second) Splitter Female",
-    "stok": 10,
-    "terjual": 0,
-    "harga_jual": "5250",
-    "harga_lama": "7070",
-    "deskripsi": "Splitter female putih",
-    "created_at": "2024-09-20T01:57:02.000000Z",
-    "updated_at": "2025-08-06T05:26:37.000000Z",
-    "galeri": [
-      {
-        "id": 45,
-        "barang_id": 72,
-        "file_path": "gambar_barang/wlk3UwT8CqHfc0i4WNg8PH74SqjIKVeYEzLJ6ypY.jpg",
-        "created_at": "2024-10-20T09:36:17.000000Z",
-        "updated_at": "2024-10-20T09:36:17.000000Z"
-      }
-    ]
   },
   {
     "id": 119,
@@ -876,27 +1182,6 @@
     ]
   },
   {
-    "id": 10,
-    "kategori": "Konektor",
-    "nama_barang": "Barel FO Biasa",
-    "stok": 205,
-    "terjual": 34,
-    "harga_jual": "1534",
-    "harga_lama": null,
-    "deskripsi": "Barel FO biasa",
-    "created_at": "2024-09-19T23:59:36.000000Z",
-    "updated_at": "2025-08-06T05:23:46.000000Z",
-    "galeri": [
-      {
-        "id": 86,
-        "barang_id": 10,
-        "file_path": "gambar_barang/CKN9wRasVeVR9nRLRcBSP3gkIP2MFWACeaTVw3mO.jpg",
-        "created_at": "2024-10-21T04:26:15.000000Z",
-        "updated_at": "2024-10-21T04:26:15.000000Z"
-      }
-    ]
-  },
-  {
     "id": 9,
     "kategori": "Konektor",
     "nama_barang": "Barel FO Flip",
@@ -1007,27 +1292,6 @@
     "galeri": []
   },
   {
-    "id": 13,
-    "kategori": "Konektor",
-    "nama_barang": "Fast Connector",
-    "stok": 57,
-    "terjual": 0,
-    "harga_jual": "3075",
-    "harga_lama": "3563",
-    "deskripsi": "Fast Connector",
-    "created_at": "2024-09-20T00:05:40.000000Z",
-    "updated_at": "2025-08-06T12:37:15.000000Z",
-    "galeri": [
-      {
-        "id": 5,
-        "barang_id": 13,
-        "file_path": "gambar_barang/o8J3rOORD88gwpelK8NRFy0SY72cKPDblccyDxy6.jpg",
-        "created_at": "2024-10-20T08:07:55.000000Z",
-        "updated_at": "2024-10-20T08:07:55.000000Z"
-      }
-    ]
-  },
-  {
     "id": 170,
     "kategori": "Konektor",
     "nama_barang": "Fast Connector Tarmoc UT-SC5007A",
@@ -1038,19 +1302,6 @@
     "deskripsi": "Fast Connector Tarmoc UT-SC5007A",
     "created_at": "2025-02-08T01:51:38.000000Z",
     "updated_at": "2025-02-19T02:06:02.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 169,
-    "kategori": "Lain-lain",
-    "nama_barang": "Hanger Kabel",
-    "stok": 134,
-    "terjual": 0,
-    "harga_jual": "6600",
-    "harga_lama": null,
-    "deskripsi": "Hanger Kabel",
-    "created_at": "2025-02-08T01:48:06.000000Z",
-    "updated_at": "2025-08-05T08:25:07.000000Z",
     "galeri": []
   },
   {
@@ -1282,6 +1533,19 @@
     "galeri": []
   },
   {
+    "id": 197,
+    "kategori": "Kabel",
+    "nama_barang": "Kabel Fiber 1c Global Mini",
+    "stok": 1000,
+    "terjual": 0,
+    "harga_jual": "782",
+    "harga_lama": "805",
+    "deskripsi": "Kabel Fiber 1c Global Mini",
+    "created_at": "2025-08-10T08:29:40.000000Z",
+    "updated_at": "2025-08-10T08:31:17.000000Z",
+    "galeri": []
+  },
+  {
     "id": 162,
     "kategori": "Kabel",
     "nama_barang": "Kabel Fiber 4c TJ Zimm Link",
@@ -1305,19 +1569,6 @@
     "deskripsi": "Kabel Fiber dc 1c",
     "created_at": "2024-09-20T01:02:52.000000Z",
     "updated_at": "2025-08-06T12:37:15.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 161,
-    "kategori": "Kabel",
-    "nama_barang": "Kabel Fiber dc 2c Global",
-    "stok": 84,
-    "terjual": 0,
-    "harga_jual": "1073",
-    "harga_lama": "990",
-    "deskripsi": "Kabel Fiber dc 2c Global",
-    "created_at": "2024-12-23T01:22:43.000000Z",
-    "updated_at": "2025-08-05T16:36:02.000000Z",
     "galeri": []
   },
   {
@@ -1355,42 +1606,16 @@
     ]
   },
   {
-    "id": 39,
+    "id": 198,
     "kategori": "Kabel",
-    "nama_barang": "Kabel UTP OS 1",
-    "stok": 13,
+    "nama_barang": "Kabel Global 2c Global [1]",
+    "stok": 1000,
     "terjual": 0,
-    "harga_jual": "2500",
-    "harga_lama": "2800",
-    "deskripsi": "Kabel UTP OS",
-    "created_at": "2024-09-20T01:09:33.000000Z",
-    "updated_at": "2025-08-06T12:37:15.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 40,
-    "kategori": "Kabel",
-    "nama_barang": "Kabel UTP OS 2",
-    "stok": 40,
-    "terjual": 0,
-    "harga_jual": "2500",
-    "harga_lama": "2800",
-    "deskripsi": "Kabel UTP OS 2",
-    "created_at": "2024-09-20T01:10:28.000000Z",
-    "updated_at": "2025-08-05T16:42:35.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 41,
-    "kategori": "Kabel",
-    "nama_barang": "Kabel UTP OS 3",
-    "stok": 32,
-    "terjual": 0,
-    "harga_jual": "2500",
-    "harga_lama": "2800",
-    "deskripsi": "Kabel UTP OS 3",
-    "created_at": "2024-09-20T01:12:38.000000Z",
-    "updated_at": "2025-08-05T16:42:49.000000Z",
+    "harga_jual": "1125",
+    "harga_lama": null,
+    "deskripsi": "Kabel Global 2c Global [1]",
+    "created_at": "2025-08-10T08:36:09.000000Z",
+    "updated_at": "2025-08-10T08:36:34.000000Z",
     "galeri": []
   },
   {
@@ -1404,19 +1629,6 @@
     "deskripsi": "Kabel UTP OS 4",
     "created_at": "2024-10-21T08:25:33.000000Z",
     "updated_at": "2025-08-05T16:43:03.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 166,
-    "kategori": "Kabel",
-    "nama_barang": "Kabel UTP OS Sisa",
-    "stok": 0,
-    "terjual": 0,
-    "harga_jual": "2500",
-    "harga_lama": "2800",
-    "deskripsi": "Kabel utp baru",
-    "created_at": "2025-01-02T03:19:12.000000Z",
-    "updated_at": "2025-08-05T16:43:23.000000Z",
     "galeri": []
   },
   {
@@ -1441,38 +1653,17 @@
     ]
   },
   {
-    "id": 184,
+    "id": 202,
     "kategori": "Modem",
-    "nama_barang": "MODEM ONU XPON VSOL 2801RGW",
-    "stok": 1,
+    "nama_barang": "Modem VSOL V2802DAC Dualband",
+    "stok": 0,
     "terjual": 0,
-    "harga_jual": "226800",
+    "harga_jual": "325",
     "harga_lama": null,
-    "deskripsi": "-",
-    "created_at": "2025-06-04T01:40:29.000000Z",
-    "updated_at": "2025-07-10T04:42:35.000000Z",
+    "deskripsi": "Modem VSOL V2802DAC Dualband",
+    "created_at": "2025-08-14T12:38:06.000000Z",
+    "updated_at": "2025-08-14T12:38:06.000000Z",
     "galeri": []
-  },
-  {
-    "id": 43,
-    "kategori": "Alat Fiber",
-    "nama_barang": "ODP 16C",
-    "stok": 2,
-    "terjual": 0,
-    "harga_jual": "150700",
-    "harga_lama": null,
-    "deskripsi": "ODP 16",
-    "created_at": "2024-09-20T01:17:07.000000Z",
-    "updated_at": "2025-07-23T08:22:10.000000Z",
-    "galeri": [
-      {
-        "id": 37,
-        "barang_id": 43,
-        "file_path": "gambar_barang/HjLJIVJRulLpegd2dlQn5HXXdau5ctkaaiag0YZU.jpg",
-        "created_at": "2024-10-20T09:20:14.000000Z",
-        "updated_at": "2024-10-20T09:20:14.000000Z"
-      }
-    ]
   },
   {
     "id": 44,
@@ -1530,17 +1721,25 @@
     "galeri": []
   },
   {
-    "id": 147,
-    "kategori": "Kabel",
-    "nama_barang": "Patchcord 3M Biru Fujitomo",
-    "stok": 3,
-    "terjual": 10,
-    "harga_jual": "14040",
-    "harga_lama": "14400",
-    "deskripsi": "Patchcord 3M Biru Fujitomo",
-    "created_at": "2024-11-25T01:44:46.000000Z",
-    "updated_at": "2025-08-06T05:23:46.000000Z",
-    "galeri": []
+    "id": 199,
+    "kategori": "Konektor",
+    "nama_barang": "Patchcord SC-LC Simplex",
+    "stok": 2,
+    "terjual": 0,
+    "harga_jual": "26400",
+    "harga_lama": null,
+    "deskripsi": "Patchcord SC-LC Simplex",
+    "created_at": "2025-08-10T08:41:10.000000Z",
+    "updated_at": "2025-08-10T08:55:13.000000Z",
+    "galeri": [
+      {
+        "id": 133,
+        "barang_id": 199,
+        "file_path": "gambar_barang/1StSPx172fAHb6PzheBsNchfxxLtEOE4ew5k9Im6.jpg",
+        "created_at": "2025-08-10T08:41:10.000000Z",
+        "updated_at": "2025-08-10T08:41:10.000000Z"
+      }
+    ]
   },
   {
     "id": 53,
@@ -1581,27 +1780,6 @@
         "file_path": "gambar_barang/onv8FyaFJmV7n25u9vUneam9rrSEmrz8a7QHvhqb.jpg",
         "created_at": "2024-10-21T04:04:14.000000Z",
         "updated_at": "2024-10-21T04:04:14.000000Z"
-      }
-    ]
-  },
-  {
-    "id": 56,
-    "kategori": "Konektor",
-    "nama_barang": "RJ 45",
-    "stok": 269,
-    "terjual": 0,
-    "harga_jual": "575",
-    "harga_lama": null,
-    "deskripsi": "RJ 45",
-    "created_at": "2024-09-20T01:34:04.000000Z",
-    "updated_at": "2025-08-06T12:37:15.000000Z",
-    "galeri": [
-      {
-        "id": 64,
-        "barang_id": 56,
-        "file_path": "gambar_barang/J54Kbl1CFuILNrDTOZGeWvedVoY9cI0Mzqr2pmsN.jpg",
-        "created_at": "2024-10-21T04:00:15.000000Z",
-        "updated_at": "2024-10-21T04:00:15.000000Z"
       }
     ]
   },
@@ -1690,68 +1868,13 @@
     "id": 195,
     "kategori": "Alat Fiber",
     "nama_barang": "Roset 2c",
-    "stok": 0,
+    "stok": 5,
     "terjual": 0,
     "harga_jual": "6000",
     "harga_lama": null,
     "deskripsi": "Roset 2c",
     "created_at": "2025-08-04T03:58:38.000000Z",
-    "updated_at": "2025-08-04T03:58:38.000000Z",
-    "galeri": []
-  },
-  {
-    "id": 61,
-    "kategori": "Alat Fiber",
-    "nama_barang": "Roset 4 core Besar",
-    "stok": 11,
-    "terjual": 1,
-    "harga_jual": "19200",
-    "harga_lama": null,
-    "deskripsi": "Roset 4 core B",
-    "created_at": "2024-09-20T01:42:41.000000Z",
-    "updated_at": "2025-08-06T05:23:46.000000Z",
-    "galeri": [
-      {
-        "id": 42,
-        "barang_id": 61,
-        "file_path": "gambar_barang/E801IEkkLRKKUULFQrIbSdknFKRZ8gVBefDVeva2.jpg",
-        "created_at": "2024-10-20T09:30:57.000000Z",
-        "updated_at": "2024-10-20T09:30:57.000000Z"
-      }
-    ]
-  },
-  {
-    "id": 62,
-    "kategori": "Alat Fiber",
-    "nama_barang": "Roset 4 core Kecil",
-    "stok": 7,
-    "terjual": 0,
-    "harga_jual": "16800",
-    "harga_lama": null,
-    "deskripsi": "Roset 4 core K",
-    "created_at": "2024-09-20T01:43:28.000000Z",
-    "updated_at": "2025-08-06T12:36:09.000000Z",
-    "galeri": [
-      {
-        "id": 47,
-        "barang_id": 62,
-        "file_path": "gambar_barang/P8mv3RQPc8Bk21dahmwoShKqigWcgjK6IMyupBdD.jpg",
-        "created_at": "2024-10-20T09:37:06.000000Z",
-        "updated_at": "2024-10-20T09:37:06.000000Z"
-      }
-    ]
-  },
-  {
-    "id": 194,
-    "kategori": "Alat Fiber",
-    "nama_barang": "Roset 8c",
-    "stok": 2,
-    "terjual": 0,
-    "harga_jual": "34800",
-    "harga_lama": null,
-    "deskripsi": "Roset 8c",
-    "created_at": "2025-07-28T01:30:31.000000Z",
-    "updated_at": "2025-07-28T01:30:53.000000Z",
+    "updated_at": "2025-08-10T08:51:38.000000Z",
     "galeri": []
   },
   {
@@ -1797,6 +1920,27 @@
     ]
   },
   {
+    "id": 67,
+    "kategori": "Router",
+    "nama_barang": "Router Totolink N355RT",
+    "stok": 1,
+    "terjual": 0,
+    "harga_jual": "196200",
+    "harga_lama": null,
+    "deskripsi": "Router totolink",
+    "created_at": "2024-09-20T01:50:28.000000Z",
+    "updated_at": "2025-08-12T08:36:30.000000Z",
+    "galeri": [
+      {
+        "id": 23,
+        "barang_id": 67,
+        "file_path": "gambar_barang/bdHqF85PQjW6bjkr7PUcnlq08LwDbYiDaETw62s9.jpg",
+        "created_at": "2024-10-20T08:58:02.000000Z",
+        "updated_at": "2024-10-20T08:58:02.000000Z"
+      }
+    ]
+  },
+  {
     "id": 179,
     "kategori": "Router",
     "nama_barang": "Ruijie RG-EW300N",
@@ -1831,59 +1975,46 @@
     ]
   },
   {
-    "id": 70,
+    "id": 200,
     "kategori": "Alat Fiber",
-    "nama_barang": "Sleeve Kecil",
-    "stok": 1184,
-    "terjual": 3,
-    "harga_jual": "505",
+    "nama_barang": "SFP Bidi HSGQ Biru",
+    "stok": 1,
+    "terjual": 0,
+    "harga_jual": "96800",
     "harga_lama": null,
-    "deskripsi": "Sleeve kecil",
-    "created_at": "2024-09-20T01:55:01.000000Z",
-    "updated_at": "2025-08-06T05:23:46.000000Z",
+    "deskripsi": "SFP Bidi HSGQ Biru",
+    "created_at": "2025-08-10T08:44:55.000000Z",
+    "updated_at": "2025-08-10T08:55:13.000000Z",
     "galeri": [
       {
-        "id": 8,
-        "barang_id": 70,
-        "file_path": "gambar_barang/xBSqlYBWsKBFvSBfMwCFJAflO58TpZbZqR4ZLljh.jpg",
-        "created_at": "2024-10-20T08:22:23.000000Z",
-        "updated_at": "2024-10-20T08:22:23.000000Z"
+        "id": 134,
+        "barang_id": 200,
+        "file_path": "gambar_barang/YFpvJRaFC45x9bv6PpNJYbKxuRNRPlTHcQfKQ8yN.jpg",
+        "created_at": "2025-08-10T08:44:55.000000Z",
+        "updated_at": "2025-08-10T08:44:55.000000Z"
       }
     ]
   },
   {
-    "id": 71,
-    "kategori": "Alat LAN",
-    "nama_barang": "Splitter Hitam Female",
-    "stok": 19,
+    "id": 201,
+    "kategori": "Alat Fiber",
+    "nama_barang": "SFP Bidi HSGQ Hijau",
+    "stok": 1,
     "terjual": 0,
-    "harga_jual": "13000",
+    "harga_jual": "96800",
     "harga_lama": null,
-    "deskripsi": "Splitter female hitam",
-    "created_at": "2024-09-20T01:56:08.000000Z",
-    "updated_at": "2025-08-05T08:24:51.000000Z",
+    "deskripsi": "SFP Bidi HSGQ Hijau",
+    "created_at": "2025-08-10T08:45:29.000000Z",
+    "updated_at": "2025-08-10T08:55:13.000000Z",
     "galeri": [
       {
-        "id": 65,
-        "barang_id": 71,
-        "file_path": "gambar_barang/4xqMsV7e5YaWXDYGa7RHsBSC7cVBOqjogzNSpCR7.jpg",
-        "created_at": "2024-10-21T04:01:26.000000Z",
-        "updated_at": "2024-10-21T04:01:26.000000Z"
+        "id": 135,
+        "barang_id": 201,
+        "file_path": "gambar_barang/zr9ty5M0Tj5UoRke1JIOZBuy6KpiCC4yn9cyNDJw.jpg",
+        "created_at": "2025-08-10T08:45:29.000000Z",
+        "updated_at": "2025-08-10T08:45:29.000000Z"
       }
     ]
-  },
-  {
-    "id": 148,
-    "kategori": "Konektor",
-    "nama_barang": "Splitter Male",
-    "stok": 16,
-    "terjual": 0,
-    "harga_jual": "13000",
-    "harga_lama": null,
-    "deskripsi": "Splitter Male",
-    "created_at": "2024-11-26T02:20:33.000000Z",
-    "updated_at": "2025-05-19T01:39:30.000000Z",
-    "galeri": []
   },
   {
     "id": 118,
@@ -2089,27 +2220,6 @@
         "file_path": "gambar_barang/8qTGQCVrzM4QJwSXWpwWbYbLoDmM4pRRifGIOLGE.jpg",
         "created_at": "2024-10-21T04:06:04.000000Z",
         "updated_at": "2024-10-21T04:06:04.000000Z"
-      }
-    ]
-  },
-  {
-    "id": 78,
-    "kategori": "Alat Fiber",
-    "nama_barang": "Splitter ratio 25:75",
-    "stok": 3,
-    "terjual": 0,
-    "harga_jual": "48000",
-    "harga_lama": null,
-    "deskripsi": "75 IR : 1.8dB - 25 IR : 6.9dB",
-    "created_at": "2024-09-20T02:06:43.000000Z",
-    "updated_at": "2025-08-01T03:05:36.000000Z",
-    "galeri": [
-      {
-        "id": 108,
-        "barang_id": 78,
-        "file_path": "gambar_barang/fvxgyEJxNTjHxakPHJlDjrSiMYbrGuleizQYAdDg.jpg",
-        "created_at": "2024-10-21T04:50:13.000000Z",
-        "updated_at": "2024-10-21T04:50:13.000000Z"
       }
     ]
   },
