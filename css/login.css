@@ -1,0 +1,35 @@
+    body {
+      background: linear-gradient(to right, #87cefa, #b0e0e6);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card-custom {
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      background-color: white;
+      width: 100%;
+      max-width: 400px;
+    }
+    .btn-sky {
+      background-color: #4682b4;
+      color: white;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+    .btn-sky:hover {
+      background-color: #5a9bd3;
+      color: white;
+    }
+    h2 {
+      color: #4682b4;
+      font-weight: 600;
+    }
+    .form-control {
+      border-radius: 10px;
+    }
+    pre {
+      background-color: #f5faff;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+    }

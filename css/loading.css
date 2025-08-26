@@ -1,0 +1,62 @@
+/* Overlay penuh layar */
+#loading-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 20px;
+  animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Teks efek ketik */
+.loading-text {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+  min-height: 24px; /* supaya posisi tetap saat teks muncul */
+}
+
+/* Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0,0,0,0.1);
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Saat overlay hilang */
+#loading-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
