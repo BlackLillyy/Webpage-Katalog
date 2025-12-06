@@ -29,7 +29,6 @@ Katalog produk interaktif berbasis web yang dibangun untuk kebutuhan proyek PKL.
 - JavaScript (vanilla)
 - [Bootstrap 5](https://getbootstrap.com/)
 - [Font Awesome](https://fontawesome.com/)
-- API publik dari [gudang.skytama.com](https://gudang.skytama.com)
 
 ---
 

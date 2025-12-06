@@ -1,5 +1,5 @@
 async function loadOutOfStock() {
-  const res = await fetch(ENV.API_URL);
+  const res = await fetch('Barang.json');
   const data = await res.json();
   const list = document.getElementById("out-of-stock-list");
 

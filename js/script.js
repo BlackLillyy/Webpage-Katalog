@@ -816,7 +816,7 @@
       });
     });    
 
-    fetch(ENV.API_URL)
+    fetch('Barang.json')
       .then(res => {
         if (!res.ok) throw new Error("Gagal memuat Barang.json");
         return res.json();

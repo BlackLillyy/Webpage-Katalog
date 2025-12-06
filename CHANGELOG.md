@@ -57,12 +57,6 @@ Semua perubahan dan update yang dilakukan selama proses pengembangan proyek ini 
 ### 🗑️ Fitur Dihapus
 - Dropdown sort by price di dalam modal filter (Karena dipindah sejajar dengan sort by lain)
 
-## [26/08/2025]
-
-### ✨ Fitur Baru
-- Loading page
-- Login page (belum sempurna)
-
 ## 📅 Catatan
 
 > Semua perubahan di atas dilakukan selama sesi PKL oleh Alhayu Navisa untuk keperluan dokumentasi dan pengembangan katalog produk berbasis web.
