@@ -779,7 +779,7 @@
     }
 
     document.getElementById("search-input").addEventListener("input", filterProducts);
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
+    document.getElementById("checkoutLoginForm").addEventListener("submit", function(e) {
       e.preventDefault();
       handleLogin();
     });
